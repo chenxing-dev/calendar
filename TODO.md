@@ -3,8 +3,8 @@
 **阶段 1：安装与配置核心依赖**
 - [x] chore(deps): add react-router and lunar-typescript
 - [ ] build(ui): initialize tailwindcss and shadcn/ui
-        - [ ] chore(css): configure tailwindcss per official guide
-        - [ ] chore(ui): initialize shadcn/ui and add button component
+    - [x] feat: add Tailwind CSS support
+    - [ ] chore(ui): initialize shadcn/ui and add button component
   
 **阶段 2：配置 React Router Data Mode 与哈希路由**
 - [ ] feat(router): set up createHashRouter route tree
