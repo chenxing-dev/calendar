@@ -2,21 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Redirecting...</title>
   <script>
     // GitHub Pages SPA redirect workaround
-    // This script takes the current location and redirects to the root
-    // with the path as a query parameter that will be read by index.html
+    // When GitHub Pages serves a 404, this script redirects to the index
+    // with the path encoded in the URL, which index.html will then restore
     (function(){
-      var path = window.location.pathname.slice(1);
-      if (path) {
-        var query = path + (window.location.search || '');
+      var path = window.location.pathname;
+      
+      // Only redirect if we're not already at the root
+      if (path !== '/' && path !== '/index.html') {
+        // Remove leading slash and encode the path
+        var redirect = path.slice(1) + window.location.search + window.location.hash;
+        
+        // Redirect to root with the path as a parameter
         window.location.replace(
-          window.location.origin + '/?redirect=' + encodeURIComponent(query)
+          window.location.origin + '/?spa-redirect=' + encodeURIComponent(redirect)
         );
       }
     })();
   </script>
 </head>
 <body>
+  <p>Redirecting...</p>
 </body>
 </html>
