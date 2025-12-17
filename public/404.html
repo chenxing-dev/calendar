@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    // GitHub Pages SPA redirect workaround
+    // This script takes the current location and redirects to the root
+    // with the path as a query parameter that will be read by index.html
+    (function(){
+      var path = window.location.pathname.slice(1);
+      if (path) {
+        var query = path + (window.location.search || '');
+        window.location.replace(
+          window.location.origin + '/?redirect=' + encodeURIComponent(query)
+        );
+      }
+    })();
+  </script>
+</head>
+<body>
+</body>
+</html>
