@@ -1,8 +1,7 @@
 # v0.1.0 开发计划
 
 **阶段 1：安装与配置核心依赖**
-- [ ] build(deps): add react-router and lunar-typescript
-        - [ ] chore(cmd): install react-router and lunar-typescript via pnpm
+- [x] chore(deps): add react-router and lunar-typescript
 - [ ] build(ui): initialize tailwindcss and shadcn/ui
         - [ ] chore(css): configure tailwindcss per official guide
         - [ ] chore(ui): initialize shadcn/ui and add button component
