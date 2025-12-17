@@ -12,12 +12,22 @@
       
       // Only redirect if we're not already at the root
       if (path !== '/' && path !== '/index.html') {
-        // Remove leading slash and encode the path
-        var redirect = path.slice(1) + window.location.search + window.location.hash;
+        // Remove leading slash
+        var redirect = path.slice(1);
+        
+        // Properly encode all URL components to prevent XSS
+        var encodedPath = encodeURIComponent(redirect);
+        var encodedSearch = encodeURIComponent(window.location.search);
+        var encodedHash = encodeURIComponent(window.location.hash);
+        
+        // Construct safe redirect URL
+        var redirectParam = encodedPath;
+        if (encodedSearch) redirectParam += encodedSearch;
+        if (encodedHash) redirectParam += encodedHash;
         
         // Redirect to root with the path as a parameter
         window.location.replace(
-          window.location.origin + '/?spa-redirect=' + encodeURIComponent(redirect)
+          window.location.origin + '/?spa-redirect=' + redirectParam
         );
       }
     })();

@@ -7,36 +7,58 @@ export function meta({ params }: { params: { date: string } }) {
   ]
 }
 
+// Helper function to safely parse date strings in YYYY-MM-DD format
+function parseDate(dateStr: string | undefined): Date | null {
+  if (!dateStr) return null;
+  
+  // Validate YYYY-MM-DD format
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRegex.test(dateStr)) return null;
+  
+  // Parse as ISO date at midnight UTC to avoid timezone issues
+  const date = new Date(dateStr + 'T00:00:00');
+  
+  // Check if date is valid
+  if (isNaN(date.getTime())) return null;
+  
+  return date;
+}
+
+// Helper function to format date for display
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+// Helper function to get date string in YYYY-MM-DD format
+function getDateString(date: Date): string {
+  return date.toISOString().split('T')[0];
+}
+
 export default function DatePage() {
   const { date } = useParams()
 
-  // Parse the date
-  let formattedDate = ''
-  let isValidDate = false
-  try {
-    const dateObj = new Date(date + 'T00:00:00')
-    if (!isNaN(dateObj.getTime())) {
-      isValidDate = true
-      formattedDate = dateObj.toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
-    }
-  } catch (e) {
-    // Invalid date
-  }
-
-  // Calculate previous and next dates
-  let prevDate = ''
-  let nextDate = ''
-  if (isValidDate) {
-    const dateObj = new Date(date + 'T00:00:00')
-    const prev = new Date(dateObj.getTime() - 86400000)
-    const next = new Date(dateObj.getTime() + 86400000)
-    prevDate = prev.toISOString().split('T')[0]
-    nextDate = next.toISOString().split('T')[0]
+  // Parse and validate the date
+  const dateObj = parseDate(date);
+  const isValidDate = dateObj !== null;
+  
+  let formattedDate = '';
+  let prevDate = '';
+  let nextDate = '';
+  
+  if (isValidDate && dateObj) {
+    formattedDate = formatDate(dateObj);
+    
+    // Calculate previous and next dates
+    const prev = new Date(dateObj.getTime() - 86400000); // Subtract 1 day in milliseconds
+    const next = new Date(dateObj.getTime() + 86400000); // Add 1 day in milliseconds
+    
+    prevDate = getDateString(prev);
+    nextDate = getDateString(next);
   }
 
   return (

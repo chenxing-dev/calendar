@@ -23,8 +23,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
             (function(){
               var redirect = new URLSearchParams(window.location.search).get('spa-redirect');
               if (redirect) {
-                // Replace the URL with the original path without the redirect parameter
-                history.replaceState(null, '', '/' + redirect);
+                try {
+                  // Decode the redirect parameter
+                  var decodedPath = decodeURIComponent(redirect);
+                  
+                  // Validate that the path starts with / and doesn't contain dangerous patterns
+                  if (decodedPath && !decodedPath.includes('://') && !decodedPath.includes('..')) {
+                    var fullPath = '/' + decodedPath.replace(/^\\//, '');
+                    
+                    // Replace the URL with the original path without the redirect parameter
+                    history.replaceState(null, '', fullPath);
+                  }
+                } catch (e) {
+                  // If decoding fails, ignore the redirect parameter
+                  console.error('Invalid redirect parameter');
+                }
               }
             })();
           `
