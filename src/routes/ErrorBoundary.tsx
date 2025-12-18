@@ -11,7 +11,7 @@ export function ErrorBoundary() {
           <h1>
             {error.status} {error.statusText}
           </h1>
-          <p>{String(error.data)}</p>
+          <pre>{String(error.data)}</pre>
         </div>
       ) : error instanceof Error ? (
         <div>
