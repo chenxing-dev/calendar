@@ -4,16 +4,24 @@
 - [x] chore(deps): add react-router and lunar-typescript
 - [x] build(ui): initialize tailwindcss and shadcn/ui
     - [x] feat: add Tailwind CSS support
+    - [ ] chore(tailwind): add @tailwindcss/typography plugin
+        - [ ] test(ui): verify prose styles render correctly
     - [x] feat(ui): initialize shadcn/ui and add card component
-  
+    - [x] feat(font):: add next-font Vite plugin (derived from @next/font) and configure Vite
+        - [x] test(font): add Noto Serif SC Google font using the plugin to verify it loads correctly
+        - [x] refactor(font): create a font utility file to centralize font configuration and usage
+
 **阶段 2：配置 React Router Data Mode 与哈希路由**
 - [ ] feat(router): set up createHashRouter route tree
-    - [ ] refactor(app): switch `src/main.tsx` render to `<RouterProvider router={router}>`
-    - [ ] feat(routes): add index route and /:date route with YYYY-MM-DD validation
-      - [ ] feat(routes): implement route objects with `loader`, `ErrorBoundary`, and `HydrateFallback`
-        1.  **`loader` 函数**：解析 URL 中的日期参数，加载对应的农历、提示、历史等数据，并返回一个完整的 `DailyData` 对象。
-        2.  **`HydrateFallback` 组件**：在数据加载时显示加载指示器。
-        3.  **`Component`**：指定根组件 `App`，在其中使用 `useLoaderData()` 获取 `loader` 返回的数据进行渲染。
+    - [x] feat(router): switch `src/main.tsx` render to `<RouterProvider router={router}>`
+    - [ ] feat(routes): add index route and /:date route
+      - [x] feat(router): set up routing with Calendar layout and pages
+      - [x] feat(routes): implement route objects with `loader`, `ErrorBoundary`
+        - 解析 URL 中的日期参数，加载对应的农历、提示、历史等数据，并返回一个完整的 `DailyData` 对象。
+      - [ ] feat(routes): implement data YYYY-MM-DD validation
+        - [ ] refactor(validation): create `isValidDateString(dateStr: string): boolean` utility function
+          - [ ] chore(deps): add date-fns library for date parsing and validation
+      - [ ] feat(routes): implement route object `HydrateFallback` 在数据加载时显示加载指示器
 - [ ] feat(loader): implement the data loader
         1.  接收 React Router 的 `LoaderFunctionArgs`。
         2.  从 `params` 中解析出日期字符串（处理 `/#/2024-12-25` 格式）。
