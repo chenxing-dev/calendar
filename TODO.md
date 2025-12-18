@@ -20,7 +20,7 @@
         - 解析 URL 中的日期参数，加载对应的农历、提示、历史等数据，并返回一个完整的 `DailyData` 对象。
       - [ ] feat(routes): implement data YYYY-MM-DD validation
         - [ ] refactor(validation): create `isValidDateString(dateStr: string): boolean` utility function
-          - [ ] chore(deps): add date-fns library for date parsing and validation
+          - [x] build(deps): add date-fns dependency
       - [ ] feat(routes): implement route object `HydrateFallback` 在数据加载时显示加载指示器
 - [ ] feat(loader): implement the data loader
         1.  接收 React Router 的 `LoaderFunctionArgs`。
