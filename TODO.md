@@ -4,8 +4,8 @@
 - [x] chore(deps): add react-router and lunar-typescript
 - [x] build(ui): initialize tailwindcss and shadcn/ui
     - [x] feat: add Tailwind CSS support
-    - [ ] chore(tailwind): add @tailwindcss/typography plugin
-        - [ ] test(ui): verify prose styles render correctly
+    - [x] chore(tailwind): add @tailwindcss/typography plugin
+        - [x] test(ui): verify prose styles render correctly
     - [x] feat(ui): initialize shadcn/ui and add card component
     - [x] feat(font):: add next-font Vite plugin (derived from @next/font) and configure Vite
         - [x] test(font): add Noto Serif SC Google font using the plugin to verify it loads correctly
