@@ -1,7 +1,7 @@
-import { useParams, Link } from "react-router";
+import { useLoaderData, Link } from "react-router";
 
 export function CalendarPage() {
-  const { date } = useParams();
+  const { date } = useLoaderData();
 
   return (
     <div>

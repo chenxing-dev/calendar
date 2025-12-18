@@ -22,6 +22,9 @@ const router = createHashRouter([
       {
         path: ":date",
         Component: CalendarPage,
+        loader: async ({ params }) => {
+          return { date: params.date || null };
+        },
       },
     ],
   },
