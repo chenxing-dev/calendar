@@ -12,21 +12,21 @@
         - [x] refactor(font): create a font utility file to centralize font configuration and usage
 
 **阶段 2：配置 React Router Data Mode 与哈希路由**
-- [ ] feat(router): set up createHashRouter route tree
+- [x] feat(router): set up createHashRouter route tree
     - [x] feat(router): switch `src/main.tsx` render to `<RouterProvider router={router}>`
-    - [ ] feat(routes): add index route and /:date route
+    - [x] feat(routes): add index route and /:date route
       - [x] feat(router): set up routing with Calendar layout and pages
       - [x] feat(routes): implement route objects with `loader`, `ErrorBoundary`
-        - 解析 URL 中的日期参数，加载对应的农历、提示、历史等数据，并返回一个完整的 `DailyData` 对象。
-      - [ ] feat(routes): implement data YYYY-MM-DD validation
+- [ ] feat(loader): implement the data loader
+    - [x] feat(routes): implement data YYYY-MM-DD validation
         - [ ] refactor(validation): create `isValidDateString(dateStr: string): boolean` utility function
           - [x] build(deps): add date-fns dependency
-      - [ ] feat(routes): implement route object `HydrateFallback` 在数据加载时显示加载指示器
-- [ ] feat(loader): implement the data loader
-        1.  接收 React Router 的 `LoaderFunctionArgs`。
-        2.  从 `params` 中解析出日期字符串（处理 `/#/2024-12-25` 格式）。
-        3.  调用 `loadDailyData(date)` 函数（下一步创建）获取数据。
-        4.  返回数据，如果数据为空或出错，可抛出 `Response` 对象（将被 `ErrorBoundary` 捕获）。
+          - [ ] refactor(validation): extract the date validation logic into the utility function
+          - [ ] refactor(validation): use date-fns to validate date strings instead of `new Date()`
+          - [ ] feat(validation): add explicit year range check (e.g., 1900-2100)
+    - [ ] feat(loader): return a typed loader result
+        - [ ] chore(types): define loader result TypeScript interface
+        - [ ] feat(loader): update route loader to return `Promise<T>`
 
 - [ ] feat: create the core data loading logic
     - [ ] feat(data): create src/lib/load-daily-data.ts
