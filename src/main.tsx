@@ -4,7 +4,7 @@ import { createHashRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
 import "./index.css";
-import { RootErrorBoundary } from "./routes/ErrorBoundary";
+import { ErrorBoundary } from "./routes/ErrorBoundary";
 import { CalendarLayout } from "./routes/CalendarLayout";
 import { CalendarCover } from "./routes/CalendarCover";
 import { CalendarPage } from "./routes/CalendarPage";
@@ -12,11 +12,8 @@ import { CalendarPage } from "./routes/CalendarPage";
 const router = createHashRouter([
   {
     path: "/",
-    ErrorBoundary: RootErrorBoundary,
     Component: CalendarLayout,
-    loader: () => {
-      return undefined;
-    },
+    ErrorBoundary: ErrorBoundary,
     children: [
       {
         index: true,
