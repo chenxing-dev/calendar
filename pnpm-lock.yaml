@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@next-font/plugin-vite':
+        specifier: ^1.4.0
+        version: 1.4.0(next-font@1.2.0)
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.1.18(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2))
@@ -23,6 +26,9 @@ importers:
       lunar-typescript:
         specifier: ^1.8.6
         version: 1.8.6
+      next-font:
+        specifier: ~1.2.0
+        version: 1.2.0
       react:
         specifier: ^19.2.0
         version: 19.2.3
@@ -389,6 +395,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@next-font/plugin-vite@1.4.0':
+    resolution: {integrity: sha512-rLTTH+nHnhE3B6A2zoBcPOtoxBzoQQF8QFxZ6JOdgzrSzM+izEnx0Bh2b5GbPB8/lubrb+nBeH2nQgiaMznZNg==}
+    peerDependencies:
+      next-font: ~1.2.0
 
   '@rolldown/pluginutils@1.0.0-beta.53':
     resolution: {integrity: sha512-vENRlFU4YbrwVqNDZ7fLvy+JR1CRkyr01jhSiDpE1u6py3OMzQfztQU2jxykW3ALNxO4kSlqIDeYyD0Y9RcQeQ==}
@@ -1096,6 +1107,9 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
+  next-font@1.2.0:
+    resolution: {integrity: sha512-1yk8OM9gIACZfeS6BI7q3WX/WWP8DzNlD8+N4UJ6EsVq9+eOBNwyhPnvvGfj6alPan0xqQgzMbLD+2Pik//kLw==}
+
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
@@ -1592,6 +1606,11 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@next-font/plugin-vite@1.4.0(next-font@1.2.0)':
+    dependencies:
+      next-font: 1.2.0
+      postcss: 8.5.6
 
   '@rolldown/pluginutils@1.0.0-beta.53': {}
 
@@ -2252,6 +2271,8 @@ snapshots:
   nanoid@3.3.11: {}
 
   natural-compare@1.4.0: {}
+
+  next-font@1.2.0: {}
 
   node-releases@2.0.27: {}
 
