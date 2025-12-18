@@ -30,8 +30,8 @@ const router = createHashRouter([
           if (date === null) {
             const message = [
               `Invalid date: "${raw}".`,
-              "Expected an ISO date (YYYY-MM-DD) that exists in the Gregorian calendar.",
-              "Example: 2025-12-18",
+              "The provided value is not a valid date.",
+              "Please provide a reasonable calendar date (for example: 2025-12-18).",
             ].join("\n");
             throw new Response(message, {
               status: 400,
