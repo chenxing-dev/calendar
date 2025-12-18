@@ -26,6 +26,9 @@ importers:
       lunar-typescript:
         specifier: ^1.8.6
         version: 1.8.6
+      next-font:
+        specifier: ~1.2.0
+        version: 1.2.0
       react:
         specifier: ^19.2.0
         version: 19.2.3

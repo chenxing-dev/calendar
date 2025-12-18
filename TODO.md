@@ -6,7 +6,7 @@
     - [x] feat: add Tailwind CSS support
     - [x] feat(ui): initialize shadcn/ui and add card component
     - [x] feat(font):: add next-font Vite plugin (derived from @next/font) and configure Vite
-        - [ ] test(font): add a custom local or Google font using the plugin to verify it loads correctly
+        - [x] test(font): add Noto Serif SC Google font using the plugin to verify it loads correctly
   
 **阶段 2：配置 React Router Data Mode 与哈希路由**
 - [ ] feat(router): set up createHashRouter route tree
