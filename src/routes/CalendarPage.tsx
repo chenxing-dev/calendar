@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 
 export function CalendarPage() {
   const { date } = useParams();
@@ -20,12 +20,12 @@ export function CalendarPage() {
       </section>
 
       <section className="mt-5 flex flex-wrap gap-3">
-        <a
-          href="#/"
+        <Link
+          to="/"
           className="text-sm font-medium text-foreground hover:underline"
         >
           Back to cover
-        </a>
+        </Link>
       </section>
     </div>
   );
