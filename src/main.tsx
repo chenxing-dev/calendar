@@ -15,7 +15,7 @@ const router = createHashRouter([
     ErrorBoundary: RootErrorBoundary,
     Component: CalendarLayout,
     loader: () => {
-      return undefined();
+      return undefined;
     },
     children: [
       {

@@ -6,17 +6,11 @@ export function CalendarPage() {
   return (
     <div>
       <header className="flex flex-wrap items-baseline gap-3">
-        <div className="text-sm text-foreground/80">
-          <code className="font-bold text-foreground">
-            {date ?? "(missing)"}
-          </code>
-        </div>
+        <h1>{date ?? "(missing)"}</h1>
       </header>
 
       <section className="mt-4">
-        <p className="text-sm leading-6 text-muted-foreground">
-          This is the day view.
-        </p>
+        <p>This is the day view.</p>
       </section>
 
       <section className="mt-5 flex flex-wrap gap-3">
