@@ -8,7 +8,7 @@ import { ErrorBoundary } from "./routes/ErrorBoundary";
 import { CalendarLayout } from "./routes/CalendarLayout";
 import { CalendarCover } from "./routes/CalendarCover";
 import { CalendarPage } from "./routes/CalendarPage";
-import { parseISODate } from "./lib/date";
+import { parseDateString } from "./lib/date";
 
 const router = createHashRouter([
   {
@@ -26,7 +26,7 @@ const router = createHashRouter([
         loader: async ({ params }) => {
           const raw = params.date ?? null;
 
-          const date = parseISODate(raw);
+          const date = parseDateString(raw);
           if (date === null) {
             const message = [
               `Invalid date: "${raw}".`,

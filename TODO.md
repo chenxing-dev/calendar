@@ -19,11 +19,13 @@
       - [x] feat(routes): implement route objects with `loader`, `ErrorBoundary`
 - [ ] feat(loader): implement the data loader
     - [x] feat(routes): implement data YYYY-MM-DD validation
-        - [ ] refactor(validation): create `isValidDateString(dateStr: string): boolean` utility function
-          - [x] build(deps): add date-fns dependency
-          - [ ] refactor(validation): extract the date validation logic into the utility function
-          - [ ] refactor(validation): use date-fns to validate date strings instead of `new Date()`
-          - [ ] feat(validation): add explicit year range check (e.g., 1900-2100)
+        - [x] build(deps): add date-fns dependency
+        - [x] refactor(validation): extract the date validation logic into the utility function
+        - [x] refactor(validation): use date-fns to validate date strings instead of `new Date()`
+        - [ ] feat(loader): canonicalize the URL date format to YYYY-MM-DD
+          - [ ] feat(validation): return both Date object and canonical date string from the validation util
+          - [ ] feat(router): implement `redirect` to canonical date format in loader
+        - [ ] feat(validation): add explicit year range check (e.g., 1900-2100)
     - [ ] feat(loader): return a typed loader result
         - [ ] chore(types): define loader result TypeScript interface
         - [ ] feat(loader): update route loader to return `Promise<T>`
