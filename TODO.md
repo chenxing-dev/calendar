@@ -12,7 +12,9 @@
 **阶段 2：配置 React Router Data Mode 与哈希路由**
 - [ ] feat(router): set up createHashRouter route tree
     - [x] feat(router): switch `src/main.tsx` render to `<RouterProvider router={router}>`
-    - [ ] feat(routes): add index route and /:date route with YYYY-MM-DD validation
+    - [ ] feat(routes): add index route and /:date route
+      - [x] feat(router): set up routing with Calendar layout and pages
+      - [ ] feat(routes): implement data YYYY-MM-DD validation
       - [ ] feat(routes): implement route objects with `loader`, `ErrorBoundary`, and `HydrateFallback`
         1.  **`loader` 函数**：解析 URL 中的日期参数，加载对应的农历、提示、历史等数据，并返回一个完整的 `DailyData` 对象。
         2.  **`HydrateFallback` 组件**：在数据加载时显示加载指示器。

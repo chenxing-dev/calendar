@@ -4,12 +4,24 @@ import { createHashRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
 import "./index.css";
-import App from "./App.tsx";
+import { CalendarLayout } from "./routes/CalendarLayout";
+import { CalendarCover } from "./routes/CalendarCover";
+import { CalendarPage } from "./routes/CalendarPage";
 
 const router = createHashRouter([
   {
     path: "/",
-    Component: App,
+    Component: CalendarLayout,
+    children: [
+      {
+        index: true,
+        Component: CalendarCover,
+      },
+      {
+        path: ":date",
+        Component: CalendarPage,
+      },
+    ],
   },
 ]);
 
