@@ -8,7 +8,7 @@ import { ErrorBoundary } from "./routes/ErrorBoundary";
 import { CalendarLayout } from "./routes/CalendarLayout";
 import { CalendarCover } from "./routes/CalendarCover";
 import { CalendarPage } from "./routes/CalendarPage";
-import { parseDateString } from "./lib/date";
+import { parseDateString, invalidDateResponse } from "./lib/date";
 
 const router = createHashRouter([
   {
@@ -27,18 +27,7 @@ const router = createHashRouter([
           const raw = params.date ?? null;
 
           const date = parseDateString(raw);
-          if (date === null) {
-            const message = [
-              `Invalid date: "${raw}".`,
-              "The provided value is not a valid date.",
-              "Please provide a reasonable calendar date (for example: 2025-12-18).",
-            ].join("\n");
-            throw new Response(message, {
-              status: 400,
-              statusText: "Invalid date",
-              headers: { "Content-Type": "text/plain; charset=utf-8" },
-            });
-          }
+          if (date === null) throw invalidDateResponse(raw);
 
           return { date };
         },

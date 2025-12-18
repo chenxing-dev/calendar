@@ -40,3 +40,20 @@ export function parseDateString(raw: string | null): Date | null {
 
   return null;
 }
+
+/**
+ * Create a standardized HTTP `Response` for invalid date input.
+ */
+export function invalidDateResponse(raw: string | null): Response {
+  const message = [
+    `Invalid date: "${raw}".`,
+    "The provided value is not a valid date.",
+    "Please provide a reasonable calendar date (for example: 2025-12-18).",
+  ].join("\n");
+
+  return new Response(message, {
+    status: 400,
+    statusText: "Invalid date",
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
