@@ -2,9 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Noto_Serif_SC } from "next-font/google";
-
-const noto = Noto_Serif_SC({ weight: ["400", "700"], subsets: ["latin"] });
+import { noto } from "./lib/fonts";
 
 function App() {
   const [count, setCount] = useState(0);
