@@ -22,9 +22,9 @@
         - [x] build(deps): add date-fns dependency
         - [x] refactor(validation): extract the date validation logic into the utility function
         - [x] refactor(validation): use date-fns to validate date strings instead of `new Date()`
-        - [ ] feat(loader): canonicalize the URL date format to YYYY-MM-DD
+        - [x] feat(loader): canonicalize the URL date format to YYYY-MM-DD
           - [ ] feat(router): format date to YYYY-MM-DD in loader and return it instead of Date object
-          - [ ] feat(router): implement `redirect` to canonical date format in loader
+          - [x] feat(router): implement `redirect` to canonical date format in loader
         - [ ] feat(validation): add explicit year range check (e.g., 1900-2100)
     - [ ] feat(loader): return a typed loader result
         - [ ] chore(types): define loader result TypeScript interface

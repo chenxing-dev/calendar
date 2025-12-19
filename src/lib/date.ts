@@ -1,18 +1,18 @@
-import { parseISO, parse, isValid } from "date-fns";
+import { parseISO, parse, isValid, format } from "date-fns";
+import { UTCDate, utc } from "@date-fns/utc";
 
 const FALLBACK_FORMATS = [
-  "yyyy-MM-dd", // 2023-12-31
-  "MM/dd/yyyy", // 12/31/2023
-  "M/d/yyyy", // 1/1/2023
+  "yyyy-MM-dd", // 2023-1-1
+  "MM-dd-yyyy", // 01-02-2023
+  "M-d-yyyy", // 1-2-2023
 ];
 
 /**
  * Parse a date string using a tolerant set of formats and return a `Date`
  * representing UTC midnight for that calendar day, or `null` if parsing
- * failed. This accepts multiple common date shapes (ISO, slashes, month names,
- * etc.)—use the loader to decide how to surface errors to users.
+ * failed. This accepts multiple common date shapes.
  */
-export function parseDateString(raw: string | null): Date | null {
+export function parseDateString(raw: string | null): UTCDate | null {
   if (raw === null) return null;
 
   const s = raw.trim();
@@ -20,10 +20,12 @@ export function parseDateString(raw: string | null): Date | null {
 
   // Try ISO first (covers strict ISO variants)
   try {
-    const iso = parseISO(s);
+    const iso = parseISO(s, { in: utc });
     if (isValid(iso)) {
-      return new Date(
-        Date.UTC(iso.getFullYear(), iso.getMonth(), iso.getDate())
+      return new UTCDate(
+        iso.getUTCFullYear(),
+        iso.getUTCMonth(),
+        iso.getUTCDate()
       );
     }
   } catch {
@@ -32,13 +34,22 @@ export function parseDateString(raw: string | null): Date | null {
 
   // Try a set of common formats
   for (const fmt of FALLBACK_FORMATS) {
-    const p = parse(s, fmt, new Date());
+    const p = parse(s, fmt, new UTCDate(), { in: utc });
     if (isValid(p)) {
-      return new Date(Date.UTC(p.getFullYear(), p.getMonth(), p.getDate()));
+      return new UTCDate(p.getUTCFullYear(), p.getUTCMonth(), p.getUTCDate());
     }
   }
 
   return null;
+}
+
+/**
+ * Format a `Date` representing a calendar day into
+ * the canonical URL shape: YYYY-MM-DD.
+ */
+export function formatCanonicalDate(date: UTCDate): string {
+  // `UTCDate` makes date-fns operate in UTC.
+  return format(date, "yyyy-MM-dd");
 }
 
 /**
