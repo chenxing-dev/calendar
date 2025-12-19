@@ -31,10 +31,10 @@
         - [x] feat(loader): update route loader to return `Promise<T>`
 
 - [ ] feat: create the core data loading logic
-    - [ ] feat(data): create src/lib/load-daily-data.ts
-        1.  使用 `lunar-typescript` 计算公历、农历、节气信息。
-        2.  根据年份，动态导入 (`import()`) 对应的数据文件，并提取当日的条目。
-        3.  将所有数据组装成一个结构化的对象并返回。
+    - [ ] feat(data): implement a DateDate getter function
+        - [ ] feat(data): use `tyme4ts` to compute solar, lunar, and solar-term information for a given date.
+        - [ ] feat(data): dynamically import (`import()`) year-specific data files and extract the entry for the selected day.
+        - [x] feat(data): assemble and return a structured object containing all calendar data for the day.
 
 **阶段 3：配置代码质量与 Git 工作流**
 - [ ] chore: configure Prettier

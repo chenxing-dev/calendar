@@ -53,15 +53,6 @@ export function parseDateString(raw: string | null): UTCDate | null {
 }
 
 /**
- * Format a `Date` representing a calendar day into
- * the canonical URL shape: YYYY-MM-DD.
- */
-export function formatCanonicalDate(date: UTCDate): string {
-  // `UTCDate` makes date-fns operate in UTC.
-  return format(date, "yyyy-MM-dd");
-}
-
-/**
  * Create a standardized HTTP `Response` for invalid date input.
  */
 export function invalidDateResponse(raw: string | null): Response {
@@ -76,4 +67,20 @@ export function invalidDateResponse(raw: string | null): Response {
     statusText: "Invalid date",
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
+}
+
+/**
+ * Format a `Date` representing a calendar day into
+ * the canonical URL shape: YYYY-MM-DD.
+ */
+export function formatCanonicalDate(date: UTCDate): string {
+  // `UTCDate` makes date-fns operate in UTC.
+  return format(date, "yyyy-MM-dd");
+}
+
+/**
+ * Build the `DateData` loader payload from a parsed UTC date.
+ */
+export function getDateData(date: UTCDate): DateData {
+  return { date: formatCanonicalDate(date) };
 }

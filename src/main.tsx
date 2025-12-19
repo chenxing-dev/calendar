@@ -11,8 +11,8 @@ import { CalendarPage } from "./routes/CalendarPage";
 import {
   parseDateString,
   invalidDateResponse,
-  formatCanonicalDate,
   type DateData,
+  getDateData,
 } from "./lib/date";
 
 const router = createHashRouter([
@@ -32,9 +32,9 @@ const router = createHashRouter([
           const raw = params.date ?? null;
           const date = parseDateString(raw);
           if (date === null) throw invalidDateResponse(raw);
-          const canonical = formatCanonicalDate(date);
-          if (raw !== canonical) return redirect(`/${canonical}`);
-          return { date: canonical };
+          const data = getDateData(date);
+          if (raw !== data.date) return redirect(`/${data.date}`);
+          return data;
         },
       },
     ],
