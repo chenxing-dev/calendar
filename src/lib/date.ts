@@ -1,10 +1,24 @@
-import { parseISO, parse, isValid, format } from "date-fns";
+import { parseISO, parse, isValid, format, startOfDay } from "date-fns";
 import { UTCDate, utc } from "@date-fns/utc";
 
-const FALLBACK_FORMATS = [
-  "yyyy-MM-dd", // 2023-1-1
-  "MM-dd-yyyy", // 01-02-2023
-  "M-d-yyyy", // 1-2-2023
+const MIN_YEAR = 1;
+const MAX_YEAR = 9999;
+
+function isYearInRange(year: number): boolean {
+  return year >= MIN_YEAR && year <= MAX_YEAR;
+}
+
+/**
+ * Return true if the parsed date is valid and its year is in range.
+ */
+function isValidDate(d: Date | UTCDate): boolean {
+  return isValid(d) && isYearInRange(d.getUTCFullYear());
+}
+
+// Accepted non-ISO date shapes we parse from URLs/input
+const ACCEPTED_DATE_FORMATS = [
+  "yyyy-M-d", // 2023-1-2, 2023-01-02
+  "M-d-yyyy", // 1-2-2023, 01-02-2023
 ];
 
 /**
@@ -21,23 +35,15 @@ export function parseDateString(raw: string | null): UTCDate | null {
   // Try ISO first (covers strict ISO variants)
   try {
     const iso = parseISO(s, { in: utc });
-    if (isValid(iso)) {
-      return new UTCDate(
-        iso.getUTCFullYear(),
-        iso.getUTCMonth(),
-        iso.getUTCDate()
-      );
-    }
+    if (isValidDate(iso)) return startOfDay(iso, { in: utc });
   } catch {
     // fall through to other formats
   }
 
   // Try a set of common formats
-  for (const fmt of FALLBACK_FORMATS) {
+  for (const fmt of ACCEPTED_DATE_FORMATS) {
     const p = parse(s, fmt, new UTCDate(), { in: utc });
-    if (isValid(p)) {
-      return new UTCDate(p.getUTCFullYear(), p.getUTCMonth(), p.getUTCDate());
-    }
+    if (isValidDate(p)) return p;
   }
 
   return null;

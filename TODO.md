@@ -25,7 +25,7 @@
         - [x] feat(loader): canonicalize the URL date format to YYYY-MM-DD
           - [x] feat(router): format date to YYYY-MM-DD in loader and return it instead of Date object
           - [x] feat(router): implement `redirect` to canonical date format in loader
-        - [ ] feat(validation): add explicit year range check (e.g., 1900-2100)
+        - [x] feat(validation): add explicit year range check (e.g., 1900-2100)
     - [ ] feat(loader): return a typed loader result
         - [ ] chore(types): define loader result TypeScript interface
         - [ ] feat(loader): update route loader to return `Promise<T>`
