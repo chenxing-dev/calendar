@@ -1,12 +1,12 @@
 import { useLoaderData, Link } from "react-router";
 
 export function CalendarPage() {
-  const { date } = useLoaderData();
+  const { date } = useLoaderData() as { date: string };
 
   return (
     <div>
       <header className="flex flex-wrap items-baseline gap-3">
-        <h1>{date.toLocaleDateString() ?? "(missing)"}</h1>
+        <h1>{date ?? "(missing)"}</h1>
       </header>
 
       <section className="mt-4">

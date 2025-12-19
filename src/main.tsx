@@ -33,7 +33,7 @@ const router = createHashRouter([
           if (date === null) throw invalidDateResponse(raw);
           const canonical = formatCanonicalDate(date);
           if (raw !== canonical) return redirect(`/${canonical}`);
-          return { date };
+          return { date: canonical };
         },
       },
     ],
