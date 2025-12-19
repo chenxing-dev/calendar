@@ -1,6 +1,9 @@
 import { parseISO, parse, isValid, format, startOfDay } from "date-fns";
 import { UTCDate, utc } from "@date-fns/utc";
 
+// Typed shape returned by the route loader for a single-day page.
+export type DateData = { date: string };
+
 const MIN_YEAR = 1;
 const MAX_YEAR = 9999;
 

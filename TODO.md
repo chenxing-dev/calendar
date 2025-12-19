@@ -17,7 +17,7 @@
     - [x] feat(routes): add index route and /:date route
       - [x] feat(router): set up routing with Calendar layout and pages
       - [x] feat(routes): implement route objects with `loader`, `ErrorBoundary`
-- [ ] feat(loader): implement the data loader
+- [x] feat(loader): implement the data loader
     - [x] feat(routes): implement data YYYY-MM-DD validation
         - [x] build(deps): add date-fns dependency
         - [x] refactor(validation): extract the date validation logic into the utility function
@@ -26,9 +26,9 @@
           - [x] feat(router): format date to YYYY-MM-DD in loader and return it instead of Date object
           - [x] feat(router): implement `redirect` to canonical date format in loader
         - [x] feat(validation): add explicit year range check (e.g., 1900-2100)
-    - [ ] feat(loader): return a typed loader result
-        - [ ] chore(types): define loader result TypeScript interface
-        - [ ] feat(loader): update route loader to return `Promise<T>`
+    - [x] feat(loader): return a typed loader result
+        - [x] chore(types): define loader result TypeScript interface
+        - [x] feat(loader): update route loader to return `Promise<T>`
 
 - [ ] feat: create the core data loading logic
     - [ ] feat(data): create src/lib/load-daily-data.ts

@@ -12,6 +12,7 @@ import {
   parseDateString,
   invalidDateResponse,
   formatCanonicalDate,
+  type DateData,
 } from "./lib/date";
 
 const router = createHashRouter([
@@ -27,7 +28,7 @@ const router = createHashRouter([
       {
         path: ":date",
         Component: CalendarPage,
-        loader: async ({ params }) => {
+        loader: async ({ params }): Promise<DateData | Response> => {
           const raw = params.date ?? null;
           const date = parseDateString(raw);
           if (date === null) throw invalidDateResponse(raw);

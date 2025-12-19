@@ -1,7 +1,8 @@
 import { useLoaderData, Link } from "react-router";
+import type { DateData } from "../lib/date";
 
 export function CalendarPage() {
-  const { date } = useLoaderData() as { date: string };
+  const { date } = useLoaderData<DateData>();
 
   return (
     <div>
