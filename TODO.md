@@ -33,7 +33,7 @@
 - [ ] feat: create the core data loading logic
     - [x] feat(data): create `src/lib/calendar.ts` for calendar data logic
     - [x] refactor(date): move calendar data loading logic into `calendar.ts`
-    - [ ] refactor(loader): rename `date.ts`
+    - [x] refactor(date): rename `date.ts` tp `date-parser.ts`
       - This file contains date parsing and validation logic. May be renamed to something that better reflects its purpose.
     - [ ] feat(data): implement a CalendarDateData getter function
         - [ ] feat(data): use `tyme4ts` to compute solar, lunar, and solar-term information for a given date.

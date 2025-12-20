@@ -8,7 +8,7 @@ import { ErrorBoundary } from "./routes/ErrorBoundary";
 import { CalendarLayout } from "./routes/CalendarLayout";
 import { CalendarCover } from "./routes/CalendarCover";
 import { CalendarPage } from "./routes/CalendarPage";
-import { parseDateString, invalidDateResponse } from "./lib/date";
+import { parseDateString, invalidDateResponse } from "./lib/date-parser";
 import { getCalendarData, type CalendarData } from "./lib/calendar";
 
 const router = createHashRouter([

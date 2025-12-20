@@ -1,13 +1,13 @@
 import { useLoaderData, Link } from "react-router";
-import type { CalendarDateData } from "../lib/date";
+import type { CalendarData } from "../lib/calendar";
 
 export function CalendarPage() {
-  const { date } = useLoaderData<CalendarDateData>();
+  const { canonical } = useLoaderData<CalendarData>();
 
   return (
     <div>
       <header className="flex flex-wrap items-baseline gap-3">
-        <h1>{date ?? "(missing)"}</h1>
+        <h1>{canonical ?? "(missing)"}</h1>
       </header>
 
       <section className="mt-4">
