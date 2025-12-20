@@ -56,9 +56,10 @@
 
 **阶段 4：更新UI和日历显示组件**
 
-- [ ] feat(ui): implement Calendar layout
-- [ ] feat(ui): implement Cover page
+- [x] feat(ui): implement Calendar layout
 - [ ] feat(ui): implement Date page
+  - [ ] feat(style): change font to Zpix
+- [ ] feat(ui): implement Cover page
 
 **阶段 5：测试**
 
