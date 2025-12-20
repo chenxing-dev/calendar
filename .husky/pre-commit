@@ -1,0 +1,4 @@
+pnpm run format && pnpm run lint
+# pnpm test
+
+# exit 1 # Simulate a test failure for testing purposes

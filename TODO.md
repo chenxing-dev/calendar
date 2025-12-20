@@ -49,8 +49,8 @@
   - [x] chore(format): add .prettierrc
   - [x] chore(format): format codebase with Prettier
 - [ ] chore: set up Husky and lint-staged
-  - [ ] chore(deps): add husky and lint-staged
-  - [ ] chore(git): initialize husky prepare script
+  - [x] chore: add husky and initialize husky
+  - [ ] chore(deps): add lint-staged
   - [ ] chore(git): add pre-commit hook for lint-staged
   - [ ] chore(git): configure lint-staged in package.json
     ```json
