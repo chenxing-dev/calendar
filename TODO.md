@@ -32,7 +32,7 @@
 
 - [ ] feat: create the core data loading logic
     - [x] feat(data): create `src/lib/calendar.ts` for calendar data logic
-    - [ ] refactor(loader): move calendar data loading logic into `calendar.ts`
+    - [x] refactor(date): move calendar data loading logic into `calendar.ts`
     - [ ] refactor(loader): rename `date.ts`
       - This file contains date parsing and validation logic. May be renamed to something that better reflects its purpose.
     - [ ] feat(data): implement a CalendarDateData getter function

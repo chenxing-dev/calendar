@@ -3,10 +3,7 @@ import type { UTCDate } from "@date-fns/utc";
 import { zhCN, enUS } from "date-fns/locale";
 import { SolarDay } from "tyme4ts";
 
-import { formatCanonicalDate } from "./date";
-
 export type SolarData = {
-  canonical: string; // 2025-12-14
   year: number; // 2025
   month: number; // 12
   day: number; // 14
@@ -27,6 +24,7 @@ export type SolarTermData = {
 };
 
 export type CalendarData = {
+  canonical: string; // 2025-12-14
   solar: SolarData;
   lunar: LunarData;
   solarTerm: SolarTermData;
@@ -41,7 +39,7 @@ export function getCalendarData(date: UTCDate): CalendarData {
   const year = getYear(date);
   const month = getMonth(date) + 1; // getMonth() returns 0-based months (0-11); convert to 1-based (1-12) for calendar display
   const day = getDate(date);
-  const canonical = formatCanonicalDate(date);
+  const canonical = format(date, "yyyy-MM-dd");
   const solarDay = SolarDay.fromYmd(year, month, day);
 
   const termDay = solarDay.getTermDay();
@@ -53,8 +51,8 @@ export function getCalendarData(date: UTCDate): CalendarData {
   const lunarMonth = lunar.getLunarMonth();
 
   return {
+    canonical,
     solar: {
-      canonical,
       year,
       month,
       day,

@@ -8,12 +8,8 @@ import { ErrorBoundary } from "./routes/ErrorBoundary";
 import { CalendarLayout } from "./routes/CalendarLayout";
 import { CalendarCover } from "./routes/CalendarCover";
 import { CalendarPage } from "./routes/CalendarPage";
-import {
-  parseDateString,
-  invalidDateResponse,
-  type CalendarDateData,
-  getCalendarDateData,
-} from "./lib/date";
+import { parseDateString, invalidDateResponse } from "./lib/date";
+import { getCalendarData, type CalendarData } from "./lib/calendar";
 
 const router = createHashRouter([
   {
@@ -28,12 +24,12 @@ const router = createHashRouter([
       {
         path: ":date",
         Component: CalendarPage,
-        loader: async ({ params }): Promise<CalendarDateData | Response> => {
+        loader: async ({ params }): Promise<CalendarData | Response> => {
           const raw = params.date ?? null;
           const date = parseDateString(raw);
           if (date === null) throw invalidDateResponse(raw);
-          const data = getCalendarDateData(date);
-          if (raw !== data.date) return redirect(`/${data.date}`);
+          const data = getCalendarData(date);
+          if (raw !== data.canonical) return redirect(`/${data.canonical}`);
           return data;
         },
       },

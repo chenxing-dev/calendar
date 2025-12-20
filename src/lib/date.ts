@@ -1,8 +1,5 @@
-import { parseISO, parse, isValid, format, startOfDay } from "date-fns";
+import { parseISO, parse, isValid, startOfDay } from "date-fns";
 import { UTCDate, utc } from "@date-fns/utc";
-
-// Typed shape returned by the route loader for a single-day page.
-export type CalendarDateData = { date: string };
 
 const MIN_YEAR = 1;
 const MAX_YEAR = 9999;
@@ -67,20 +64,4 @@ export function invalidDateResponse(raw: string | null): Response {
     statusText: "Invalid date",
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
-}
-
-/**
- * Format a `Date` representing a calendar day into
- * the canonical URL shape: YYYY-MM-DD.
- */
-export function formatCanonicalDate(date: UTCDate): string {
-  // `UTCDate` makes date-fns operate in UTC.
-  return format(date, "yyyy-MM-dd");
-}
-
-/**
- * Build the `CalendarDateData` loader payload from a parsed UTC date.
- */
-export function getCalendarDateData(date: UTCDate): CalendarDateData {
-  return { date: formatCanonicalDate(date) };
 }
