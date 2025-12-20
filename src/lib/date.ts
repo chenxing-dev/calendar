@@ -2,7 +2,7 @@ import { parseISO, parse, isValid, format, startOfDay } from "date-fns";
 import { UTCDate, utc } from "@date-fns/utc";
 
 // Typed shape returned by the route loader for a single-day page.
-export type DateData = { date: string };
+export type CalendarDateData = { date: string };
 
 const MIN_YEAR = 1;
 const MAX_YEAR = 9999;
@@ -79,8 +79,8 @@ export function formatCanonicalDate(date: UTCDate): string {
 }
 
 /**
- * Build the `DateData` loader payload from a parsed UTC date.
+ * Build the `CalendarDateData` loader payload from a parsed UTC date.
  */
-export function getDateData(date: UTCDate): DateData {
+export function getCalendarDateData(date: UTCDate): CalendarDateData {
   return { date: formatCanonicalDate(date) };
 }

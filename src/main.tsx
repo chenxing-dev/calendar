@@ -11,8 +11,8 @@ import { CalendarPage } from "./routes/CalendarPage";
 import {
   parseDateString,
   invalidDateResponse,
-  type DateData,
-  getDateData,
+  type CalendarDateData,
+  getCalendarDateData,
 } from "./lib/date";
 
 const router = createHashRouter([
@@ -28,11 +28,11 @@ const router = createHashRouter([
       {
         path: ":date",
         Component: CalendarPage,
-        loader: async ({ params }): Promise<DateData | Response> => {
+        loader: async ({ params }): Promise<CalendarDateData | Response> => {
           const raw = params.date ?? null;
           const date = parseDateString(raw);
           if (date === null) throw invalidDateResponse(raw);
-          const data = getDateData(date);
+          const data = getCalendarDateData(date);
           if (raw !== data.date) return redirect(`/${data.date}`);
           return data;
         },
