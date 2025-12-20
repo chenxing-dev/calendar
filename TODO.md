@@ -30,16 +30,15 @@
         - [x] chore(types): define loader result TypeScript interface
         - [x] feat(loader): update route loader to return `Promise<T>`
 
-- [ ] feat: create the core data loading logic
+- [x] feat: create the core data loading logic
     - [x] feat(data): create `src/lib/calendar.ts` for calendar data logic
     - [x] refactor(date): move calendar data loading logic into `calendar.ts`
     - [x] refactor(date): rename `date.ts` tp `date-parser.ts`
-    - [ ] feat(data): implement a CalendarDateData getter function
-        - [ ] feat(data): use `tyme4ts` to compute solar, lunar, and solar-term information for a given date.
+    - [x] feat(data): implement a CalendarDateData getter function
+        - [x] feat(data): use `tyme4ts` to compute solar, lunar, and solar-term information for a given date.
           - [x] feat(date): extract `getSolarData(date: UTCDate)`)
-          - [ ] feat(date): extract `getLunarData(date: UTCDate)`
-          - [ ] feat(date): extract `getSolarTermData(date: UTCDate)`
-        - [ ] feat(data): dynamically import (`import()`) year-specific data files and extract the entry for the selected day.
+          - [x] feat(date): extract `getLunarData(date: UTCDate)`
+          - [x] feat(date): extract `getSolarTermData(date: UTCDate)`
         - [x] feat(data): assemble and return a structured object containing all calendar data for the day.
 
 **阶段 3：配置代码质量与 Git 工作流**
