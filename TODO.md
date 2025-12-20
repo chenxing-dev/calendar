@@ -46,8 +46,8 @@
 **阶段 3：配置代码质量与 Git 工作流**
 
 - [x] chore: configure Prettier
-  - [x] chore(format): add .prettierrc 
-  - [ ] chore(format): format scripts
+  - [x] chore(format): add .prettierrc
+  - [x] chore(format): format codebase with Prettier
 - [ ] chore: set up Husky and lint-staged
   - [ ] chore(deps): add husky and lint-staged
   - [ ] chore(git): initialize husky prepare script

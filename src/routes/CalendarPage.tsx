@@ -15,10 +15,7 @@ export function CalendarPage() {
       </section>
 
       <section className="mt-5 flex flex-wrap gap-3">
-        <Link
-          to="/"
-          className="text-sm font-medium text-foreground hover:underline"
-        >
+        <Link to="/" className="text-sm font-medium text-foreground hover:underline">
           Back to cover
         </Link>
       </section>

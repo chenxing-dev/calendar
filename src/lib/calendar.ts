@@ -56,12 +56,7 @@ export interface CalendarData {
 }
 
 /** Build the `SolarData` for a given UTC date. */
-export function getSolarData(
-  date: UTCDate,
-  year: number,
-  month: number,
-  day: number
-): SolarData {
+export function getSolarData(date: UTCDate, year: number, month: number, day: number): SolarData {
   return {
     year,
     month,
