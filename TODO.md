@@ -31,8 +31,14 @@
         - [x] feat(loader): update route loader to return `Promise<T>`
 
 - [ ] feat: create the core data loading logic
+    - [x] feat(data): create `src/lib/calendar.ts` for calendar data logic
+    - [ ] refactor(loader): move calendar data loading logic into `calendar.ts`
+    - [ ] refactor(loader): rename `date.ts`
+      - This file contains date parsing and validation logic. May be renamed to something that better reflects its purpose.
     - [ ] feat(data): implement a CalendarDateData getter function
         - [ ] feat(data): use `tyme4ts` to compute solar, lunar, and solar-term information for a given date.
+          - [ ] feat(date): implement `getLunarInfo(date: UTCDate)`
+          - [ ] feat(date): implement `getSolarTerm(date: UTCDate)`
         - [ ] feat(data): dynamically import (`import()`) year-specific data files and extract the entry for the selected day.
         - [x] feat(data): assemble and return a structured object containing all calendar data for the day.
 
@@ -50,7 +56,17 @@
         }
         ```
 
-**阶段 4：准备 GitHub Pages 部署**
+**阶段 4：更新UI和日历显示组件**
+- [ ] feat(ui): implement Calendar layout
+- [ ] feat(ui): implement Cover page
+- [ ] feat(ui): implement Date page
+
+**阶段 5：测试**
+- [ ] test: set up testing framework
+    - [ ] chore(deps): learn about Vitest and React Testing Library
+    - [ ] test: add unit tests to verify lunar date calculations, solar terms, and data loading logic
+
+**阶段 6：准备 GitHub Pages 部署**
 - [ ] chore: configure Vite for GitHub Pages
     - [ ] chore(vite): set base to /calendar/ in vite.config.ts
 - [ ] chore: add deployment scripts
@@ -61,7 +77,7 @@
         "deploy": "gh-pages -d dist"
         ```
 
-**阶段 5：验证与初次部署**
+**阶段 7：验证与初次部署**
 - [ ] test: verify build and routing
     - [ ] test(build): run `pnpm run build` and verify `dist` output.
     - [ ] test(preview): run `pnpm run preview` and verify hash routing
