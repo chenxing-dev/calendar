@@ -48,16 +48,11 @@
 - [x] chore: configure Prettier
   - [x] chore(format): add .prettierrc
   - [x] chore(format): format codebase with Prettier
-- [ ] chore: set up Husky and lint-staged
+- [x] chore: set up Husky and lint-staged
   - [x] chore: add husky and initialize husky
-  - [ ] chore(deps): add lint-staged
-  - [ ] chore(git): add pre-commit hook for lint-staged
-  - [ ] chore(git): configure lint-staged in package.json
-    ```json
-    "lint-staged": {
-      "*.{ts,tsx,js,jsx,json,css,md}": ["prettier --write"]
-    }
-    ```
+  - [x] chore(deps): add lint-staged
+  - [x] chore(git): add pre-commit hook for lint-staged
+  - [x] chore(git): configure lint-staged in package.json
 
 **阶段 4：更新UI和日历显示组件**
 
