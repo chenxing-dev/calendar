@@ -3,32 +3,57 @@ import type { UTCDate } from "@date-fns/utc";
 import { zhCN, enUS } from "date-fns/locale";
 import { SolarDay } from "tyme4ts";
 
-export type SolarData = {
-  year: number; // 2025
-  month: number; // 12
-  day: number; // 14
-  weekdayZh: string; // e.g. "星期六"
-  weekdayEn: string; // e.g. "Saturday"
-};
+/**
+ * `SolarData` is a normalized snapshot of the Gregorian (solar) calendar
+ * components for a single day.
+ *
+ * - `year`: four-digit Gregorian year (e.g. 2025)
+ * - `month`: 1-based Gregorian month (1–12)
+ * - `day`: day of the month (1–31)
+ * - `weekdayZh`: localized weekday name in Simplified Chinese (e.g. "星期六")
+ * - `weekdayEn`: localized weekday name in English (e.g. "Saturday")
+ */
+export interface SolarData {
+  year: number;
+  month: number;
+  day: number;
+  weekdayZh: string;
+  weekdayEn: string;
+}
 
-export type LunarData = {
-  yearGanzhi: string; // e.g. "乙巳"
-  monthName: string; // e.g. "冬月"
-  dayName: string; // e.g. "廿三"
-};
+export interface LunarData {
+  yearGanzhi: string;
+  monthName: string;
+  dayName: string;
+}
 
-export type SolarTermData = {
-  termName: string; // e.g. "大雪"
-  daysSinceTerm: number; // e.g. 7
-  isTermDay: boolean; // e.g. false
-};
+export interface SolarTermData {
+  termName: string;
+  daysSinceTerm: number;
+  isTermDay: boolean;
+}
 
-export type CalendarData = {
-  canonical: string; // 2025-12-14
+export interface CalendarData {
+  canonical: string;
   solar: SolarData;
   lunar: LunarData;
   solarTerm: SolarTermData;
-};
+}
+
+/** Build the `SolarData` for a given UTC date. */
+export function getSolarData(date: UTCDate): SolarData {
+  const year = getYear(date);
+  const month = getMonth(date) + 1; // convert to 1-based
+  const day = getDate(date);
+
+  return {
+    year,
+    month,
+    day,
+    weekdayZh: format(date, "EEEE", { locale: zhCN }),
+    weekdayEn: format(date, "EEEE", { locale: enUS }),
+  };
+}
 
 /**
  * Build the `CalendarData` for a given UTC date.
@@ -36,11 +61,9 @@ export type CalendarData = {
  * @returns The assembled `CalendarData` for that day.
  */
 export function getCalendarData(date: UTCDate): CalendarData {
-  const year = getYear(date);
-  const month = getMonth(date) + 1; // getMonth() returns 0-based months (0-11); convert to 1-based (1-12) for calendar display
-  const day = getDate(date);
+  const solar = getSolarData(date);
   const canonical = format(date, "yyyy-MM-dd");
-  const solarDay = SolarDay.fromYmd(year, month, day);
+  const solarDay = SolarDay.fromYmd(solar.year, solar.month, solar.day);
 
   const termDay = solarDay.getTermDay();
   const termName = termDay.getName();
@@ -52,13 +75,7 @@ export function getCalendarData(date: UTCDate): CalendarData {
 
   return {
     canonical,
-    solar: {
-      year,
-      month,
-      day,
-      weekdayZh: format(date, "EEEE", { locale: zhCN }),
-      weekdayEn: format(date, "EEEE", { locale: enUS }),
-    },
+    solar,
     lunar: {
       yearGanzhi: lunar.getYearSixtyCycle().toString(),
       monthName: lunarMonth.getName(),
