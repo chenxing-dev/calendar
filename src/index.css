@@ -122,4 +122,15 @@
   body {
     @apply bg-background text-foreground;
   }
+  pre {
+    @apply whitespace-pre-wrap font-mono;
+  }
+  hr {
+    border: none;
+    height: 1.5rem; /* vertical spacing retained */
+    background-image: repeating-linear-gradient(90deg, currentColor 0 7px, transparent 7px 9px);
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: auto 1.2px; /* underline thickness */
+  }
 }
