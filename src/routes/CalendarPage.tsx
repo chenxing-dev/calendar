@@ -6,10 +6,9 @@ export function CalendarPage() {
 
   return (
     <div>
-      <hr />
       <p>{solar.year}年</p>
       <hr />
-      <p>{solar.day}</p>
+      <p className="font-bold">{solar.day}</p>
       <p>
         {solar.weekdayZh} | {solar.weekdayEn}
       </p>
@@ -19,8 +18,11 @@ export function CalendarPage() {
       </p>
       <p>{solarTerm.termName}节气</p>
       <hr />
-      <Link to="/">Back to cover</Link>
-      <hr />
+      <p>
+        <Link to="/">
+          <span className="font-bold">{"<- "}</span>Back to cover
+        </Link>
+      </p>
     </div>
   );
 }
