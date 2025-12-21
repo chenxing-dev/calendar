@@ -58,7 +58,7 @@
 
 - [x] feat(ui): implement Calendar layout
 - [ ] feat(ui): implement Date page
-  - [ ] feat(style): change font to Zpix
+  - [x] feat(style): change font to Zpix
 - [ ] feat(ui): implement Cover page
 
 **阶段 5：测试**
