@@ -63,9 +63,8 @@
 
 **阶段 5：测试**
 
-- [ ] test: set up testing framework
-  - [ ] chore(deps): learn about Vitest and React Testing Library
-  - [ ] test: add unit tests to verify lunar date calculations, solar terms, and data loading logic
+- [x] chore(deps): add Vitest to the project
+- [ ] test: add unit tests to verify lunar date calculations, solar terms, and data loading logic
 
 **阶段 6：准备 GitHub Pages 部署**
 
