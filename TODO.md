@@ -64,7 +64,7 @@
 **阶段 5：测试**
 
 - [x] chore(deps): add Vitest to the project
-- [ ] test: add unit tests to verify lunar date calculations, solar terms, and data loading logic
+- [x] test: add unit tests to verify calendar data
 
 **阶段 6：准备 GitHub Pages 部署**
 

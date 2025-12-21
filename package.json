@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\"",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test": "vitest",
     "prepare": "husky"
   },
   "lint-staged": {
