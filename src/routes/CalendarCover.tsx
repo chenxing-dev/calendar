@@ -1,21 +1,17 @@
-import { Link } from "react-router";
+import type { CalendarCoverData } from "@/lib/calendar";
+import { useLoaderData, Link } from "react-router";
 
 export function CalendarCover() {
+  const { year } = useLoaderData<CalendarCoverData>();
+
   return (
     <div>
-      <header>
-        <h1>Calendar</h1>
-        <p>A tiny calendar app.</p>
-      </header>
-
-      <section className="mt-5 flex flex-wrap gap-3">
-        <Link
-          to="/2025-01-01"
-          className="inline-flex items-center border px-3 py-2 text-sm text-foreground hover:bg-accent"
-        >
-          Example: 2025-01-01
-        </Link>
-      </section>
+      <p className="text-center">** {year} **</p>
+      <p className="text-center">日 历</p>
+      <p className="text-center">CALENDAR</p>
+      <p className="text-end font-bold">
+        <Link to="/2025-01-01">{"->"}</Link>
+      </p>
     </div>
   );
 }

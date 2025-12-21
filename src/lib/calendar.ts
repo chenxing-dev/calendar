@@ -1,7 +1,15 @@
 import { getDate, getMonth, getYear, format } from "date-fns";
-import type { UTCDate } from "@date-fns/utc";
+import { UTCDate } from "@date-fns/utc";
 import { zhCN, enUS } from "date-fns/locale";
 import { SolarDay } from "tyme4ts";
+
+export interface CalendarCoverData {
+  year: number;
+}
+
+export function getCurrentYear() {
+  return getYear(new UTCDate());
+}
 
 /**
  * `SolarData` is a normalized snapshot of the Gregorian (solar) calendar
