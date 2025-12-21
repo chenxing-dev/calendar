@@ -6,7 +6,10 @@ export function CalendarPage() {
 
   return (
     <div>
-      <p>{solar.year}年</p>
+      <p>
+        {solar.year}年 {solar.monthNameZh}
+      </p>
+      <p>{solar.monthNameEn}</p>
       <hr />
       <p className="font-bold">{solar.day}</p>
       <p>

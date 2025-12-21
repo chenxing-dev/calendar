@@ -25,6 +25,8 @@ export interface SolarData {
   year: number;
   month: number;
   day: number;
+  monthNameZh: string;
+  monthNameEn: string;
   weekdayZh: string;
   weekdayEn: string;
 }
@@ -69,6 +71,8 @@ export function getSolarData(date: UTCDate, year: number, month: number, day: nu
     year,
     month,
     day,
+    monthNameZh: format(date, "LLLL", { locale: zhCN }),
+    monthNameEn: format(date, "LLLL", { locale: enUS }),
     weekdayZh: format(date, "EEEE", { locale: zhCN }),
     weekdayEn: format(date, "EEEE", { locale: enUS }),
   };
