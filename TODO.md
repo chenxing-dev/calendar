@@ -59,13 +59,13 @@
 - [x] feat(ui): implement Calendar layout
 - [ ] feat(ui): implement Date page
   - [x] feat(style): change font to Zpix
-  - [ ] refactor: 用 dayjs 替换 date-fns 进行日期处理
+  - [x] refactor: 用 dayjs 替换 date-fns 进行日期处理
     - [x] chore: 创建分支 feat/migrate-to-dayjs
     - [x] chore(deps): add dayjs and dayjs-plugin-utc
     - [x] refactor(date): replace date-fns usages with dayjs equivalents
     - [x] chore(deps): add dayjs-plugin-lunar
     - [x] refactor: 用 dayjs-plugin-lunar 替换直接用 tyme4ts 进行农历计算
-    - [ ] chore(deps): remove date-fns and tyme4ts
+    - [x] chore(deps): remove date-fns, @date-fns/utc and tyme4ts
 - [x] feat(ui): implement Cover page
 
 **阶段 5：测试**
