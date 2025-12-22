@@ -16,10 +16,10 @@ export function CalendarPage() {
         {solar.weekdayZh} | {solar.weekdayEn}
       </p>
       <p>
-        农历{lunar.yearGanzhi}年 {lunar.monthName}
-        {lunar.dayName}
+        农历{lunar.year}年 {lunar.month}
+        {lunar.day}
       </p>
-      <p>{solarTerm.termName}节气</p>
+      <p>{solarTerm.name}节气</p>
       <hr />
       <p>
         <Link to="/">

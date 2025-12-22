@@ -1,25 +1,30 @@
-import { getDate, getMonth, getYear, format } from "date-fns";
-import { UTCDate } from "@date-fns/utc";
-import { zhCN, enUS } from "date-fns/locale";
-import { SolarDay } from "tyme4ts";
+import dayjs, { Dayjs } from "dayjs";
+import utc from "dayjs/plugin/utc";
+import "dayjs/locale/zh-cn";
+import { PluginLunar as lunar } from "dayjs-plugin-lunar";
+
+dayjs.extend(utc);
+dayjs.extend(lunar, { traditional: true });
 
 export interface CalendarCoverData {
   year: number;
 }
 
 export function getCalendarCoverData(): CalendarCoverData {
-  return { year: getYear(new UTCDate()) };
+  return { year: dayjs.utc().year() };
 }
 
 /**
- * `SolarData` is a normalized snapshot of the Gregorian (solar) calendar
- * components for a single day.
+ * `SolarData` 表示某一天的阳历（公历）标准化快照。
  *
- * - `year`: four-digit Gregorian year (e.g. 2025)
- * - `month`: 1-based Gregorian month (1–12)
- * - `day`: day of the month (1–31)
- * - `weekdayZh`: localized weekday name in Simplified Chinese (e.g. "星期六")
- * - `weekdayEn`: localized weekday name in English (e.g. "Saturday")
+ * 字段说明：
+ * - `year`：四位公历年（例如 2025）
+ * - `month`：月（1–12）
+ * - `day`：日（1–31）
+ * - `monthNameZh`：中文月份名称（例如 "十二月"）
+ * - `monthNameEn`：英文月份名称（例如 "December"）
+ * - `weekdayZh`：中文星期名称（例如 "星期六"）
+ * - `weekdayEn`：英文星期名称（例如 "Saturday"）
  */
 export interface SolarData {
   year: number;
@@ -32,29 +37,30 @@ export interface SolarData {
 }
 
 /**
- * `LunarData` is a normalized snapshot of the lunar calendar
- * components for a single day.
+ * `LunarData` 表示某一天的农历（阴历）标准化快照。
  *
- * - `yearGanzhi`: the year's name in the sexagenary (60-year) cycle (e.g. "甲子")
- * - `monthName`: the lunar month's display name (e.g. "正月", "闰四月")
- * - `dayName`: the lunar day's display name (e.g. "初一", "十五")
+ * 字段说明：
+ * - `year`：干支纪年表示（例如 "甲子"）
+ * - `month`：农历月份显示名（例如 "正月"、"闰四月"）
+ * - `day`：农历日的显示名（例如 "初一"、"十五"）
  */
 export interface LunarData {
-  yearGanzhi: string;
-  monthName: string;
-  dayName: string;
+  year: string;
+  month: string;
+  day: string;
 }
 
 /**
- * `SolarTermData` describes the solar-term (节气) information for a single day.
+ * `SolarTermData` 描述某一天的节气信息。
  *
- * - `termName`: name of the nearest solar term (e.g. "冬至")
- * - `daysSinceTerm`: number of days since that term (0 if the date is the term day)
- * - `isTermDay`: true when the date is exactly the solar term day
+ * 说明：
+ * - `name`：当天所在节气
+ * - `dayOfTerm`：位于节气的第几天
+ * - `isTermDay`：当天是否节气
  */
 export interface SolarTermData {
-  termName: string;
-  daysSinceTerm: number;
+  name: string;
+  dayOfTerm: number;
   isTermDay: boolean;
 }
 
@@ -65,72 +71,77 @@ export interface CalendarData {
   solarTerm: SolarTermData;
 }
 
-/** Build the `SolarData` for a given UTC date. */
-export function getSolarData(date: UTCDate, year: number, month: number, day: number): SolarData {
+/**
+ * Build the `SolarData` snapshot for a given Dayjs date.
+ *
+ * Notes:
+ * - `month` is 1-based (1–12).
+ * - Chinese fields are formatted using the `zh-cn` locale.
+ *
+ * @param date - Target date as a Dayjs instance (typically a UTC day in this app).
+ */
+export function getSolarData(date: Dayjs): SolarData {
+  const dateZh = date.locale("zh-cn");
+
   return {
-    year,
-    month,
-    day,
-    monthNameZh: format(date, "LLLL", { locale: zhCN }),
-    monthNameEn: format(date, "LLLL", { locale: enUS }),
-    weekdayZh: format(date, "EEEE", { locale: zhCN }),
-    weekdayEn: format(date, "EEEE", { locale: enUS }),
+    year: date.year(),
+    month: date.month() + 1, // convert to 1-based
+    day: date.date(),
+    monthNameZh: dateZh.format("MMMM"),
+    monthNameEn: date.format("MMMM"),
+    weekdayZh: dateZh.format("dddd"),
+    weekdayEn: date.format("dddd"),
   };
 }
 
 /**
- * Build the `LunarData` for a given `SolarDay`.
+ * Build the `LunarData` snapshot for a given Dayjs date.
  *
- * This function expects a precomputed `SolarDay` (from `tyme4ts`) and
- * returns the lunar calendar snapshot for that day.
+ * Uses `dayjs-plugin-lunar` to format the lunar year/month/day display strings.
  *
- * @param solarDay - precomputed `SolarDay` for the target date
- * @returns `LunarData
+ * @param date - Target date as a Dayjs instance.
  */
-export function getLunarData(solarDay: SolarDay): LunarData {
-  const lunar = solarDay.getLunarDay();
-  const lunarMonth = lunar.getLunarMonth();
-
+export function getLunarData(date: Dayjs): LunarData {
   return {
-    yearGanzhi: lunar.getYearSixtyCycle().toString(),
-    monthName: lunarMonth.getName(),
-    dayName: lunar.getName(),
+    year: date.format("LY"),
+    month: date.format("LM"),
+    day: date.format("LD"),
   };
 }
 
 /**
- * Build the `SolarTermData` for a given `SolarDay`.
+ * Build the `SolarTermData` for a given Dayjs date.
  *
- * Accepts a precomputed `SolarDay` and returns information about the
- * nearest solar term for that day.
+ * Semantics:
+ * - `name`: the solar term (节气) that the date falls within.
+ * - `dayOfTerm`: the 1-based day number within that solar term.
+ * - `isTermDay`: true only on the first day of that solar term.
  *
- * @param solarDay - precomputed `SolarDay` for the target date
- * @returns `SolarTermData`
+ * @param date - Target date as a Dayjs instance.
  */
-export function getSolarTermData(solarDay: SolarDay): SolarTermData {
-  const termDay = solarDay.getTermDay();
+export function getSolarTermData(date: Dayjs): SolarTermData {
+  const termDay = date.toLunarDay().getSolarDay().getTermDay();
 
-  const termName = termDay.getName();
-  const daysSinceTerm = termDay.getDayIndex();
-  const isTermDay = daysSinceTerm === 0;
+  const termDayIndex = termDay.getDayIndex(); // 节气日序号（0 起始）
 
-  return { termName, daysSinceTerm, isTermDay };
+  return {
+    name: termDay.getName(),
+    dayOfTerm: termDayIndex + 1,
+    isTermDay: termDayIndex === 0,
+  };
 }
 
 /**
- * Build the `CalendarData` for a given UTC date.
- * @param date - A `UTCDate` representing the calendar day.
+ * Build the assembled `CalendarData` snapshot for a given Dayjs date.
+ *
+ * @param date - Target date as a Dayjs instance (typically a UTC day in this app).
  * @returns The assembled `CalendarData` for that day.
  */
-export function getCalendarData(date: UTCDate): CalendarData {
-  const canonical = format(date, "yyyy-MM-dd");
-  const year = getYear(date);
-  const month = getMonth(date) + 1; // convert to 1-based
-  const day = getDate(date);
-  const solarDay = SolarDay.fromYmd(year, month, day);
-  const solar = getSolarData(date, year, month, day);
-  const lunar = getLunarData(solarDay);
-  const solarTerm = getSolarTermData(solarDay);
+export function getCalendarData(date: Dayjs): CalendarData {
+  const canonical = date.format("YYYY-MM-DD");
+  const solar = getSolarData(date);
+  const lunar = getLunarData(date);
+  const solarTerm = getSolarTermData(date);
 
   return {
     canonical,

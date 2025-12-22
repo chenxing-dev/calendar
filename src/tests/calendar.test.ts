@@ -1,10 +1,10 @@
 import { expect, test } from "vitest";
-import { UTCDate } from "@date-fns/utc";
+import dayjs from "dayjs";
 import { getCalendarData } from "../lib/calendar.ts";
 
 test("getCalendarData returns expected structure and canonical date", () => {
   // Use a deterministic UTC date: 2025-12-13
-  const date = new UTCDate("2025-12-13"); // month is 0-based for JS Date
+  const date = dayjs.utc("2025-12-13"); // Dayjs parses ISO date strings
   const data = getCalendarData(date);
 
   expect(data).toBeDefined();
@@ -20,12 +20,12 @@ test("getCalendarData returns expected structure and canonical date", () => {
   expect(data.solar.monthNameZh).toBe("十二月");
 
   expect(data.lunar).toBeDefined();
-  expect(data.lunar.yearGanzhi).toBe("乙巳");
-  expect(data.lunar.monthName).toBe("十月");
-  expect(data.lunar.dayName).toBe("廿四");
+  expect(data.lunar.year).toBe("乙巳");
+  expect(data.lunar.month).toBe("十月");
+  expect(data.lunar.day).toBe("廿四");
 
   expect(data.solarTerm).toBeDefined();
-  expect(data.solarTerm.termName).toBe("大雪");
-  expect(data.solarTerm.daysSinceTerm).toBe(6);
+  expect(data.solarTerm.name).toBe("大雪");
+  expect(data.solarTerm.dayOfTerm).toBe(7);
   expect(data.solarTerm.isTermDay).toBe(false);
 });

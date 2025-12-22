@@ -64,7 +64,7 @@
     - [x] chore(deps): add dayjs and dayjs-plugin-utc
     - [x] refactor(date): replace date-fns usages with dayjs equivalents
     - [x] chore(deps): add dayjs-plugin-lunar
-    - [ ] refactor: 用 dayjs-plugin-lunar 替换 tyme4ts 进行农历计算
+    - [x] refactor: 用 dayjs-plugin-lunar 替换直接用 tyme4ts 进行农历计算
     - [ ] chore(deps): remove date-fns and tyme4ts
 - [x] feat(ui): implement Cover page
 
@@ -72,6 +72,7 @@
 
 - [x] chore(deps): add Vitest to the project
 - [x] test: add unit tests to verify calendar data
+  - [ ] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
 
 **阶段 6：准备 GitHub Pages 部署**
 
