@@ -34,6 +34,7 @@ const router = createHashRouter([
         Component: CalendarPage,
         loader: async ({ params }): Promise<CalendarData | Response> => {
           const raw = params.date ?? null;
+          if (raw === null || raw.trim() === "") return redirect(`/`);
           const date = parseDateString(raw);
           if (date === null) throw invalidDateResponse(raw);
           const data = getCalendarData(date);
