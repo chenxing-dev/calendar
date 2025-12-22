@@ -7,8 +7,8 @@ export interface CalendarCoverData {
   year: number;
 }
 
-export function getCurrentYear() {
-  return getYear(new UTCDate());
+export function getCalendarCoverData(): CalendarCoverData {
+  return { year: getYear(new UTCDate()) };
 }
 
 /**

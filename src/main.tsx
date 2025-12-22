@@ -10,7 +10,7 @@ import { CalendarCover } from "./routes/CalendarCover";
 import { CalendarPage } from "./routes/CalendarPage";
 import { parseDateString, invalidDateResponse } from "./lib/date-parser";
 import {
-  getCurrentYear,
+  getCalendarCoverData,
   getCalendarData,
   type CalendarCoverData,
   type CalendarData,
@@ -26,7 +26,7 @@ const router = createHashRouter([
         index: true,
         Component: CalendarCover,
         loader: async (): Promise<CalendarCoverData> => {
-          return { year: getCurrentYear() };
+          return getCalendarCoverData();
         },
       },
       {
