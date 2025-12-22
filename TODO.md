@@ -63,7 +63,7 @@
     - [x] chore: 创建分支 feat/migrate-to-dayjs
     - [x] chore(deps): add dayjs and dayjs-plugin-utc
     - [x] refactor(date): replace date-fns usages with dayjs equivalents
-    - [ ] chore(deps): add dayjs-plugin-lunar
+    - [x] chore(deps): add dayjs-plugin-lunar
     - [ ] refactor: 用 dayjs-plugin-lunar 替换 tyme4ts 进行农历计算
     - [ ] chore(deps): remove date-fns and tyme4ts
 - [x] feat(ui): implement Cover page
