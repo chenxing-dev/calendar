@@ -68,11 +68,15 @@
     - [x] chore(deps): remove date-fns, @date-fns/utc and tyme4ts
 - [x] feat(ui): implement Cover page
 
-**阶段 5：测试**
+**阶段 5：测试与优化**
 
 - [x] chore(deps): add Vitest to the project
 - [x] test: add unit tests to verify calendar data
   - [ ] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
+- [ ] chore: optimize bundle size
+  - [ ] chore: subset/convert ttf font to woff2
+  - [ ] chore(vite): analyze bundle with a visualizer
+  - [ ] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
 
 **阶段 6：准备 GitHub Pages 部署**
 
