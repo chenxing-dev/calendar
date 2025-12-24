@@ -8,7 +8,7 @@ export function CalendarLayout() {
   const isNavigating = Boolean(navigation.location);
   return (
     <Layout>
-      <Card className="w-full max-w-xs mx-auto">
+      <Card className="w-full max-w-md mx-auto">
         <CardContent>
           {isNavigating && <Spinner className="size-8" />}
           <Outlet />
