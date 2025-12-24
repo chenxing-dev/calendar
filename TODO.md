@@ -73,6 +73,11 @@
     - [ ] feat(observances): implement matchers for lunar date observances
     - [x] refactor(observances): rework `getObservancesData` to compute `today` and scan future UTC days for `upcoming` observances
     - [x] test(observances): add tests for observances in `calendar.test.ts`
+  - [ ] feat(calendar): add a minimal accordion for "历史上的今天"
+    - [ ] refactor(calendar): move the example entries into a separate file
+    - [ ] feat(ui): implement accordion component
+    - [ ] feat(ui): integrate accordion into CalendarPage
+    - [ ] feat(calendar): create a helper to load historical events for a given date
 - [x] feat(ui): implement Cover page
 
 **阶段 5：测试与优化**
