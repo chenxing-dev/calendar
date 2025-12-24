@@ -66,6 +66,7 @@
     - [x] chore(deps): add dayjs-plugin-lunar
     - [x] refactor: 用 dayjs-plugin-lunar 替换直接用 tyme4ts 进行农历计算
     - [x] chore(deps): remove date-fns, @date-fns/utc and tyme4ts
+  - [ ] feat(calendar): add festivals/holidays display
 - [x] feat(ui): implement Cover page
 
 **阶段 5：测试与优化**

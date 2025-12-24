@@ -46,6 +46,7 @@ export interface SolarData {
  */
 export interface LunarData {
   year: string;
+  season: string;
   month: string;
   day: string;
 }
@@ -64,11 +65,22 @@ export interface SolarTermData {
   isTermDay: boolean;
 }
 
+export interface ObservanceData {
+  observance: string;
+  daysUntil: number;
+}
+
+export interface ObservancesData {
+  today: string[];
+  upcoming: ObservanceData[];
+}
+
 export interface CalendarData {
   canonical: string;
   solar: SolarData;
   lunar: LunarData;
   solarTerm: SolarTermData;
+  observances: ObservancesData;
 }
 
 /**
@@ -106,6 +118,7 @@ export function getLunarData(date: Dayjs): LunarData {
     year: date.format("LY"),
     month: date.format("LM"),
     day: date.format("LD"),
+    season: date.toLunarSeason().getName(),
   };
 }
 
@@ -131,6 +144,22 @@ export function getSolarTermData(date: Dayjs): SolarTermData {
   };
 }
 
+export function getObservancesData(date: Dayjs): ObservancesData {
+  // Placeholder implementation; replace with real observance logic later.
+  const todayObservances: string[] = [];
+  const upcomingObservances: ObservanceData[] = [];
+
+  // Example: Add a fixed observance for demonstration.
+  if (date.month() === 11 && date.date() === 13) {
+    todayObservances.push("国家公祭日");
+    upcomingObservances.push({ observance: "圣诞节", daysUntil: 12 });
+  }
+  return {
+    today: todayObservances,
+    upcoming: upcomingObservances,
+  };
+}
+
 /**
  * Build the assembled `CalendarData` snapshot for a given Dayjs date.
  *
@@ -142,11 +171,13 @@ export function getCalendarData(date: Dayjs): CalendarData {
   const solar = getSolarData(date);
   const lunar = getLunarData(date);
   const solarTerm = getSolarTermData(date);
+  const observances = getObservancesData(date);
 
   return {
     canonical,
     solar,
     lunar,
     solarTerm,
+    observances,
   };
 }

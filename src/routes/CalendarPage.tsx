@@ -2,7 +2,7 @@ import { useLoaderData, Link } from "react-router";
 import type { CalendarData } from "../lib/calendar";
 
 export function CalendarPage() {
-  const { solar, lunar, solarTerm } = useLoaderData<CalendarData>();
+  const { solar, lunar, solarTerm, observances } = useLoaderData<CalendarData>();
 
   return (
     <div>
@@ -19,7 +19,18 @@ export function CalendarPage() {
         农历{lunar.year}年 {lunar.month}
         {lunar.day}
       </p>
-      <p>{solarTerm.name}节气</p>
+      <p>
+        {solarTerm.name}节气 · {lunar.season}之时
+      </p>
+      <hr />
+      {observances.today.map((observance) => (
+        <p key={observance}>- {observance}</p>
+      ))}
+      {observances.upcoming.map(({ observance, daysUntil }) => (
+        <p key={observance}>
+          - 距离{observance}还有 {daysUntil} 天
+        </p>
+      ))}
       <hr />
       <p>
         <Link to="/">
