@@ -28,4 +28,11 @@ test("getCalendarData returns expected structure and canonical date", () => {
   expect(data.solarTerm.name).toBe("大雪");
   expect(data.solarTerm.dayOfTerm).toBe(7);
   expect(data.solarTerm.isTermDay).toBe(false);
+
+  expect(data.observances).toBeDefined();
+  expect(data.observances.today).toContain("国家公祭日");
+  expect(data.observances.upcoming).toContainEqual({
+    observance: "圣诞节",
+    daysUntil: 12,
+  });
 });

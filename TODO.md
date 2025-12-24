@@ -67,6 +67,12 @@
     - [x] refactor: 用 dayjs-plugin-lunar 替换直接用 tyme4ts 进行农历计算
     - [x] chore(deps): remove date-fns, @date-fns/utc and tyme4ts
   - [ ] feat(calendar): add festivals/holidays display
+    - [x] feat(observances): confirm observance upcoming window to 14 days
+    - [x] feat(observances): add an observance registry
+    - [x] feat(observances): implement matchers for fixed solar date observances
+    - [ ] feat(observances): implement matchers for lunar date observances
+    - [x] refactor(observances): rework `getObservancesData` to compute `today` and scan future UTC days for `upcoming` observances
+    - [x] test(observances): add tests for observances in `calendar.test.ts`
 - [x] feat(ui): implement Cover page
 
 **阶段 5：测试与优化**

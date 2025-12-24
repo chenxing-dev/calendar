@@ -2,6 +2,7 @@ import dayjs, { Dayjs } from "dayjs";
 import utc from "dayjs/plugin/utc";
 import "dayjs/locale/zh-cn";
 import { PluginLunar as lunar } from "dayjs-plugin-lunar";
+import { type ObservancesData, getObservancesData } from "./observances.js";
 
 dayjs.extend(utc);
 dayjs.extend(lunar, { traditional: true });
@@ -63,16 +64,6 @@ export interface SolarTermData {
   name: string;
   dayOfTerm: number;
   isTermDay: boolean;
-}
-
-export interface ObservanceData {
-  observance: string;
-  daysUntil: number;
-}
-
-export interface ObservancesData {
-  today: string[];
-  upcoming: ObservanceData[];
 }
 
 export interface CalendarData {
@@ -141,22 +132,6 @@ export function getSolarTermData(date: Dayjs): SolarTermData {
     name: termDay.getName(),
     dayOfTerm: termDayIndex + 1,
     isTermDay: termDayIndex === 0,
-  };
-}
-
-export function getObservancesData(date: Dayjs): ObservancesData {
-  // Placeholder implementation; replace with real observance logic later.
-  const todayObservances: string[] = [];
-  const upcomingObservances: ObservanceData[] = [];
-
-  // Example: Add a fixed observance for demonstration.
-  if (date.month() === 11 && date.date() === 13) {
-    todayObservances.push("国家公祭日");
-    upcomingObservances.push({ observance: "圣诞节", daysUntil: 12 });
-  }
-  return {
-    today: todayObservances,
-    upcoming: upcomingObservances,
   };
 }
 
