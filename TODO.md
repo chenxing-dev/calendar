@@ -76,7 +76,7 @@
   - [ ] feat(calendar): add a minimal accordion for "历史上的今天"
     - [x] refactor(calendar): move the example entries into a separate file
     - [x] feat(calendar): create a helper to load historical events for a given date
-    - [ ] feat(ui): implement accordion component
+    - [x] feat(ui): add shadcn/ui accordion component
     - [ ] feat(ui): integrate accordion into CalendarPage
 - [x] feat(ui): implement Cover page
 
