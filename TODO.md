@@ -86,8 +86,16 @@
   - [x] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
 - [ ] chore: optimize bundle size
   - [x] chore: replace zpix.ttf with zpix.woff2
-  - [ ] chore(vite): analyze bundle with a visualizer
+  - [x] chore(vite): analyze bundle with a visualizer
   - [ ] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
+    - [x] perf: measure initial bundle size before code splitting
+      - dist/assets/index-6IIQOCh3.css 16.27 kB │ gzip: 4.24 kB
+      - dist/assets/index-CAKYRGwp.js 543.74 kB │ gzip: 180.18 kB
+    - [ ] perf: convert route components to lazy imports
+    - [ ] perf: move `tyme4ts` out of the initial bundle
+      - avoid top-level import of `tyme4ts` in `calendar.ts`
+      - use dynamic import with `await import('tyme4ts')` inside functions that need it
+    - [ ] perf: measure bundle size after code splitting
 - [ ] test(ui): add UI tests with Playwright
   - [ ] chore: learn about UI test with Playwright
   - [ ] test(ui): set up Playwright testing framework
