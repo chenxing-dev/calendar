@@ -10,7 +10,7 @@ export function CalendarCover() {
       <p className="text-center">日 历</p>
       <p className="text-center">CALENDAR</p>
       <p className="text-end font-bold">
-        <Link to="/2025-01-01">{"->"}</Link>
+        <Link to="/2025-12-13">{"->"}</Link>
       </p>
     </div>
   );

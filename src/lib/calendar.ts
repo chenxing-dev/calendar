@@ -3,6 +3,7 @@ import utc from "dayjs/plugin/utc";
 import "dayjs/locale/zh-cn";
 import { PluginLunar as lunar } from "dayjs-plugin-lunar";
 import { type ObservancesData, getObservancesData } from "./observances.js";
+import { type OnThisDayEvent, getOnThisDayEvents } from "./on-this-day.js";
 
 dayjs.extend(utc);
 dayjs.extend(lunar, { traditional: true });
@@ -72,6 +73,7 @@ export interface CalendarData {
   lunar: LunarData;
   solarTerm: SolarTermData;
   observances: ObservancesData;
+  onThisDayEvents: OnThisDayEvent[];
 }
 
 /**
@@ -147,6 +149,7 @@ export function getCalendarData(date: Dayjs): CalendarData {
   const lunar = getLunarData(date);
   const solarTerm = getSolarTermData(date);
   const observances = getObservancesData(date);
+  const onThisDayEvents = getOnThisDayEvents(date);
 
   return {
     canonical,
@@ -154,5 +157,6 @@ export function getCalendarData(date: Dayjs): CalendarData {
     lunar,
     solarTerm,
     observances,
+    onThisDayEvents,
   };
 }

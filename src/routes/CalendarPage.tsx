@@ -2,7 +2,7 @@ import { useLoaderData, Link } from "react-router";
 import type { CalendarData } from "../lib/calendar";
 
 export function CalendarPage() {
-  const { solar, lunar, solarTerm, observances } = useLoaderData<CalendarData>();
+  const { solar, lunar, solarTerm, observances, onThisDayEvents } = useLoaderData<CalendarData>();
 
   return (
     <div>
@@ -32,10 +32,17 @@ export function CalendarPage() {
           - 距离{observance}还有 {daysUntil} 天
         </p>
       ))}
-      <hr />
-      <p>[+] 历史上的今天</p>
-      <p>1937年 - 日本军队成功攻占中华民国首都南京市，并在未来数星期内展开各式反人类战争罪行。</p>
-      <p>2003年 - 美军寻获前伊拉克总统萨达姆·侯赛因在提克里特的藏身处，并发起行动将其俘虏。</p>
+      {onThisDayEvents.length > 0 ? (
+        <>
+          <hr />
+          <p>[+] 历史上的今天</p>
+          {onThisDayEvents.map((event, index) => (
+            <p key={`${event.year}-${index}`}>
+              {event.year}年 - {event.description}
+            </p>
+          ))}
+        </>
+      ) : null}
       <hr />
       <p>
         <Link to="/">
