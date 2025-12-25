@@ -36,3 +36,12 @@ test("getCalendarData returns expected structure and canonical date", () => {
     daysUntil: 12,
   });
 });
+test("lunar: 2001-05-23 是 闰四月 初一", () => {
+  const date = dayjs.utc("2001-05-23");
+  const data = getCalendarData(date);
+
+  expect(data).toBeDefined();
+  expect(data.lunar).toBeDefined();
+  expect(data.lunar.month).toBe("闰四月");
+  expect(data.lunar.day).toBe("初一");
+});

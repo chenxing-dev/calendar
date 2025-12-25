@@ -83,7 +83,7 @@
 
 - [x] chore(deps): add Vitest to the project
 - [x] test: add unit tests to verify calendar data
-  - [ ] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
+  - [x] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
 - [ ] chore: optimize bundle size
   - [ ] chore: subset/convert ttf font to woff2
   - [ ] chore(vite): analyze bundle with a visualizer
