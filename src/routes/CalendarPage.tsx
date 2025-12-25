@@ -1,14 +1,29 @@
 import { useLoaderData, Link } from "react-router";
+import { useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { CalendarData } from "../lib/calendar";
+import type { CalendarData, SolarData } from "../lib/calendar";
+import type { ObservancesData } from "@/lib/observances";
+
+function setTitleForCalendarPage(solar: SolarData, observances: ObservancesData) {
+  const todayObservance = observances.today.length > 0 ? observances.today[0] : null;
+  if (todayObservance) {
+    document.title = `${solar.year}年${todayObservance.name}`;
+  } else {
+    document.title = `${solar.year}年${solar.month}月${solar.day}日`;
+  }
+}
 
 export function CalendarPage() {
   const { solar, lunar, solarTerm, observances, onThisDayEvents } = useLoaderData<CalendarData>();
+
+  useEffect(() => {
+    setTitleForCalendarPage(solar, observances);
+  }, [solar, observances]);
 
   return (
     <div>
@@ -31,7 +46,12 @@ export function CalendarPage() {
       </p>
       <hr />
       {observances.today.map((observance) => (
-        <p key={observance}>- {observance}</p>
+        <p key={observance.name}>
+          - <span className={observance.nameClass}>{observance.name}</span>
+          {observance.message ? (
+            <span className={`ml-2 ${observance.messageClass}`}>{observance.message}</span>
+          ) : null}
+        </p>
       ))}
       {observances.upcoming.map(({ observance, daysUntil }) => (
         <p key={observance}>

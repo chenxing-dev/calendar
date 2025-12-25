@@ -57,7 +57,7 @@
 **阶段 4：更新UI和日历显示组件**
 
 - [x] feat(ui): implement Calendar layout
-- [ ] feat(ui): implement Date page
+- [x] feat(ui): implement Date page
   - [x] feat(style): change font to Zpix
   - [x] refactor: 用 dayjs 替换 date-fns 进行日期处理
     - [x] chore: 创建分支 feat/migrate-to-dayjs
@@ -66,14 +66,13 @@
     - [x] chore(deps): add dayjs-plugin-lunar
     - [x] refactor: 用 dayjs-plugin-lunar 替换直接用 tyme4ts 进行农历计算
     - [x] chore(deps): remove date-fns, @date-fns/utc and tyme4ts
-  - [ ] feat(calendar): add festivals/holidays display
+  - [x] feat(calendar): add festivals/holidays display
     - [x] feat(observances): confirm observance upcoming window to 14 days
     - [x] feat(observances): add an observance registry
     - [x] feat(observances): implement matchers for fixed solar date observances
-    - [ ] feat(observances): implement matchers for lunar date observances
     - [x] refactor(observances): rework `getObservancesData` to compute `today` and scan future UTC days for `upcoming` observances
     - [x] test(observances): add tests for observances in `calendar.test.ts`
-  - [ ] feat(calendar): add a minimal accordion for "历史上的今天"
+  - [x] feat(calendar): add a minimal accordion for "历史上的今天"
     - [x] refactor(calendar): move the example entries into a separate file
     - [x] feat(calendar): create a helper to load historical events for a given date
     - [x] feat(ui): add shadcn/ui accordion component
