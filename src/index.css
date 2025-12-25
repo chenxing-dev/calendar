@@ -122,6 +122,9 @@
     font-size: 24px;
     line-height: 1.5;
   }
+  a {
+    @apply focus-visible:outline-none underline-offset-8 decoration-dashed focus-visible:underline hover:underline;
+  }
   hr {
     border: none;
     height: 1.5rem; /* vertical spacing retained */

@@ -1,4 +1,10 @@
 import { useLoaderData, Link } from "react-router";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import type { CalendarData } from "../lib/calendar";
 
 export function CalendarPage() {
@@ -35,12 +41,18 @@ export function CalendarPage() {
       {onThisDayEvents.length > 0 ? (
         <>
           <hr />
-          <p>[+] 历史上的今天</p>
-          {onThisDayEvents.map((event, index) => (
-            <p key={`${event.year}-${index}`}>
-              {event.year}年 - {event.description}
-            </p>
-          ))}
+          <Accordion type="single" collapsible>
+            <AccordionItem value="on-this-day">
+              <AccordionTrigger>历史上的今天</AccordionTrigger>
+              <AccordionContent>
+                {onThisDayEvents.map((event, index) => (
+                  <p key={`${event.year}-${index}`}>
+                    {event.year}年 - {event.description}
+                  </p>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </>
       ) : null}
       <hr />

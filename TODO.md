@@ -77,7 +77,7 @@
     - [x] refactor(calendar): move the example entries into a separate file
     - [x] feat(calendar): create a helper to load historical events for a given date
     - [x] feat(ui): add shadcn/ui accordion component
-    - [ ] feat(ui): integrate accordion into CalendarPage
+    - [x] feat(ui): integrate accordion into CalendarPage
 - [x] feat(ui): implement Cover page
 
 **阶段 5：测试与优化**
