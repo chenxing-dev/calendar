@@ -1,12 +1,10 @@
 import dayjs, { Dayjs } from "dayjs";
 import utc from "dayjs/plugin/utc";
 import "dayjs/locale/zh-cn";
-import { PluginLunar as lunar } from "dayjs-plugin-lunar";
 import { type ObservancesData, getObservancesData } from "./observances.js";
 import { type OnThisDayEvent, getOnThisDayEvents } from "./on-this-day.js";
 
 dayjs.extend(utc);
-dayjs.extend(lunar, { traditional: true });
 
 export interface CalendarCoverData {
   year: number;
@@ -106,7 +104,8 @@ export function getSolarData(date: Dayjs): SolarData {
  *
  * @param date - Target date as a Dayjs instance.
  */
-export function getLunarData(date: Dayjs): LunarData {
+export async function getLunarData(date: Dayjs): Promise<LunarData> {
+  await ensureLunarPlugin();
   return {
     year: date.format("LY"),
     month: date.format("LM"),
@@ -125,7 +124,8 @@ export function getLunarData(date: Dayjs): LunarData {
  *
  * @param date - Target date as a Dayjs instance.
  */
-export function getSolarTermData(date: Dayjs): SolarTermData {
+export async function getSolarTermData(date: Dayjs): Promise<SolarTermData> {
+  await ensureLunarPlugin();
   const termDay = date.toLunarDay().getSolarDay().getTermDay();
 
   const termDayIndex = termDay.getDayIndex(); // 节气日序号（0 起始）
@@ -137,17 +137,35 @@ export function getSolarTermData(date: Dayjs): SolarTermData {
   };
 }
 
+let lunarPluginInitialization: Promise<void> | null = null;
+
+async function ensureLunarPlugin(): Promise<void> {
+  if (!lunarPluginInitialization) {
+    lunarPluginInitialization = import("dayjs-plugin-lunar")
+      .then(({ PluginLunar }) => {
+        dayjs.extend(PluginLunar, { traditional: true });
+      })
+      .catch((error) => {
+        // Reset so that future calls can retry the import.
+        lunarPluginInitialization = null;
+        const message = error instanceof Error ? error.message : String(error);
+        throw new Error(`Failed to load dayjs-plugin-lunar: ${message}`);
+      });
+  }
+  return lunarPluginInitialization;
+}
+
 /**
  * Build the assembled `CalendarData` snapshot for a given Dayjs date.
  *
  * @param date - Target date as a Dayjs instance (typically a UTC day in this app).
  * @returns The assembled `CalendarData` for that day.
  */
-export function getCalendarData(date: Dayjs): CalendarData {
+export async function getCalendarData(date: Dayjs): Promise<CalendarData> {
   const canonical = date.format("YYYY-MM-DD");
   const solar = getSolarData(date);
-  const lunar = getLunarData(date);
-  const solarTerm = getSolarTermData(date);
+  const lunar = await getLunarData(date);
+  const solarTerm = await getSolarTermData(date);
   const observances = getObservancesData(date);
   const onThisDayEvents = getOnThisDayEvents(date);
 

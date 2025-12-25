@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
 import { Layout } from "../components/Layout";
 
-export function CalendarLayout() {
+export default function CalendarLayout() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
   return (

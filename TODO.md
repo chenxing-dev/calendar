@@ -88,13 +88,8 @@
   - [x] chore: replace zpix.ttf with zpix.woff2
   - [x] chore(vite): analyze bundle with a visualizer
   - [ ] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
-    - [x] perf: measure initial bundle size before code splitting
-      - dist/assets/index-6IIQOCh3.css 16.27 kB │ gzip: 4.24 kB
-      - dist/assets/index-CAKYRGwp.js 543.74 kB │ gzip: 180.18 kB
-    - [ ] perf: convert route components to lazy imports
-    - [ ] perf: move `tyme4ts` out of the initial bundle
-      - avoid top-level import of `tyme4ts` in `calendar.ts`
-      - use dynamic import with `await import('tyme4ts')` inside functions that need it
+    - [x] perf: convert route components to lazy imports
+    - [x] perf: move `tyme4ts`/`dayjs-plugin-lunar` out of the initial bundle
     - [ ] perf: measure bundle size after code splitting
 - [ ] test(ui): add UI tests with Playwright
   - [ ] chore: learn about UI test with Playwright
@@ -104,6 +99,9 @@
 
 **阶段 6：准备 GitHub Pages 部署**
 
+- [ ] feat: favicon and metadata
+  - [ ] chore: create a simple favicon.ico
+  - [ ] feat(meta): add basic meta tags in index.html
 - [ ] chore: configure Vite for GitHub Pages
   - [ ] chore(vite): set base to /calendar/ in vite.config.ts
 - [ ] chore: add deployment scripts

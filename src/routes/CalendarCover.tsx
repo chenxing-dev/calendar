@@ -6,7 +6,7 @@ function setTitleForCover(year: number) {
   document.title = `${year} 年 日历`;
 }
 
-export function CalendarCover() {
+export default function CalendarCover() {
   const { year } = useLoaderData<CalendarCoverData>();
 
   useEffect(() => {

@@ -18,7 +18,7 @@ function setTitleForCalendarPage(solar: SolarData, observances: ObservancesData)
   }
 }
 
-export function CalendarPage() {
+export default function CalendarPage() {
   const { solar, lunar, solarTerm, observances, onThisDayEvents } = useLoaderData<CalendarData>();
 
   useEffect(() => {

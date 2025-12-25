@@ -1,13 +1,7 @@
-import { StrictMode } from "react";
+import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
-import { createHashRouter, redirect } from "react-router";
-import { RouterProvider } from "react-router/dom";
-
-import "./index.css";
+import { createHashRouter, redirect, RouterProvider } from "react-router";
 import { ErrorBoundary } from "./routes/ErrorBoundary";
-import { CalendarLayout } from "./routes/CalendarLayout";
-import { CalendarCover } from "./routes/CalendarCover";
-import { CalendarPage } from "./routes/CalendarPage";
 import { parseDateString, invalidDateResponse } from "./lib/date-parser";
 import {
   getCalendarCoverData,
@@ -15,6 +9,11 @@ import {
   type CalendarCoverData,
   type CalendarData,
 } from "./lib/calendar";
+import "./index.css";
+
+const CalendarLayout = lazy(() => import("./routes/CalendarLayout"));
+const CalendarCover = lazy(() => import("./routes/CalendarCover"));
+const CalendarPage = lazy(() => import("./routes/CalendarPage"));
 
 const router = createHashRouter([
   {
@@ -37,7 +36,7 @@ const router = createHashRouter([
           if (raw === null || raw.trim() === "") return redirect(`/`);
           const date = parseDateString(raw);
           if (date === null) throw invalidDateResponse(raw);
-          const data = getCalendarData(date);
+          const data = await getCalendarData(date);
           if (raw !== data.canonical) return redirect(`/${data.canonical}`);
           return data;
         },

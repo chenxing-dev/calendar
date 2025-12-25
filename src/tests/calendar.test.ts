@@ -2,10 +2,10 @@ import { expect, test } from "vitest";
 import dayjs from "dayjs";
 import { getCalendarData } from "../lib/calendar.ts";
 
-test("getCalendarData returns expected structure and canonical date", () => {
+test("getCalendarData returns expected structure and canonical date", async () => {
   // Use a deterministic UTC date: 2025-12-13
   const date = dayjs.utc("2025-12-13"); // Dayjs parses ISO date strings
-  const data = getCalendarData(date);
+  const data = await getCalendarData(date);
 
   expect(data).toBeDefined();
   expect(data.canonical).toBe("2025-12-13");
@@ -36,9 +36,9 @@ test("getCalendarData returns expected structure and canonical date", () => {
     daysUntil: 12,
   });
 });
-test("lunar: 2001-05-23 是 闰四月 初一", () => {
+test("lunar: 2001-05-23 是 闰四月 初一", async () => {
   const date = dayjs.utc("2001-05-23");
-  const data = getCalendarData(date);
+  const data = await getCalendarData(date);
 
   expect(data).toBeDefined();
   expect(data.lunar).toBeDefined();
