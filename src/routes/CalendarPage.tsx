@@ -44,35 +44,39 @@ export function CalendarPage() {
       <p>
         {solarTerm.name}节气 · {lunar.season}之时
       </p>
-      <hr />
-      {observances.today.map((observance) => (
-        <p key={observance.name}>
-          - <span className={observance.nameClass}>{observance.name}</span>
-          {observance.message ? (
-            <span className={`ml-2 ${observance.messageClass}`}>{observance.message}</span>
-          ) : null}
-        </p>
-      ))}
-      {observances.upcoming.map(({ observance, daysUntil }) => (
-        <p key={observance}>
-          - 距离{observance}还有 {daysUntil} 天
-        </p>
-      ))}
-      {onThisDayEvents.length > 0 ? (
+      {observances.today.length > 0 || observances.upcoming.length > 0 ? (
         <>
           <hr />
-          <Accordion type="single" collapsible>
-            <AccordionItem value="on-this-day">
-              <AccordionTrigger>历史上的今天</AccordionTrigger>
-              <AccordionContent>
-                {onThisDayEvents.map((event, index) => (
-                  <p key={`${event.year}-${index}`}>
-                    {event.year}年 - {event.description}
-                  </p>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          {observances.today.map((observance) => (
+            <p key={observance.name}>
+              - <span className={observance.nameClass}>{observance.name}</span>
+              {observance.message ? (
+                <span className={`ml-2 ${observance.messageClass}`}>{observance.message}</span>
+              ) : null}
+            </p>
+          ))}
+          {observances.upcoming.map(({ observance, daysUntil }) => (
+            <p key={observance}>
+              - 距离{observance}还有 {daysUntil} 天
+            </p>
+          ))}
+          {onThisDayEvents.length > 0 ? (
+            <>
+              <hr />
+              <Accordion type="single" collapsible>
+                <AccordionItem value="on-this-day">
+                  <AccordionTrigger>历史上的今天</AccordionTrigger>
+                  <AccordionContent>
+                    {onThisDayEvents.map((event, index) => (
+                      <p key={`${event.year}-${index}`}>
+                        {event.year}年 - {event.description}
+                      </p>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </>
+          ) : null}
         </>
       ) : null}
       <hr />
