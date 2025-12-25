@@ -85,9 +85,14 @@
 - [x] test: add unit tests to verify calendar data
   - [x] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
 - [ ] chore: optimize bundle size
-  - [ ] chore: subset/convert ttf font to woff2
+  - [x] chore: replace zpix.ttf with zpix.woff2
   - [ ] chore(vite): analyze bundle with a visualizer
   - [ ] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
+- [ ] test(ui): add UI tests with Playwright
+  - [ ] chore: learn about UI test with Playwright
+  - [ ] test(ui): set up Playwright testing framework
+  - [ ] test(ui): add tests for main pages and navigation
+  - [ ] test(ui): test on different viewport sizes (iPhone, iPad, ThinkPad)
 
 **阶段 6：准备 GitHub Pages 部署**
 
