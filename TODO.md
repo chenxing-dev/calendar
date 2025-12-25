@@ -84,13 +84,12 @@
 - [x] chore(deps): add Vitest to the project
 - [x] test: add unit tests to verify calendar data
   - [x] test(lunar): verify lunar calendar data and formatting for leap April (闰四月) and first day of month (初一)
-- [ ] chore: optimize bundle size
+- [x] chore: optimize bundle size
   - [x] chore: replace zpix.ttf with zpix.woff2
   - [x] chore(vite): analyze bundle with a visualizer
-  - [ ] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
+  - [x] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
     - [x] perf: convert route components to lazy imports
     - [x] perf: move `tyme4ts`/`dayjs-plugin-lunar` out of the initial bundle
-    - [ ] perf: measure bundle size after code splitting
 - [ ] test(ui): add UI tests with Playwright
   - [ ] chore: learn about UI test with Playwright
   - [ ] test(ui): set up Playwright testing framework
