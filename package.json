@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "prepare": "husky"
+    "prepare": "husky",
+    "predeploy": "pnpm build",
+    "deploy": "gh-pages -d dist"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

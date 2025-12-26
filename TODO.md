@@ -103,13 +103,9 @@
     - [x] feat(meta): add robots meta tag
 - [x] chore: configure Vite for GitHub Pages
   - [x] build(vite): set base to /calendar/ in vite.config.ts
-- [ ] chore: add deployment scripts
+- [x] chore: add deployment scripts
   - [x] chore(deps): add gh-pages
-  - [ ] chore(deploy): add predeploy/deploy scripts to package.json
-    ```json
-    "predeploy": "pnpm run build",
-    "deploy": "gh-pages -d dist"
-    ```
+  - [x] chore(deploy): add predeploy/deploy scripts to package.json
 
 **阶段 7：验证与初次部署**
 
