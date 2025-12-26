@@ -7,11 +7,13 @@ import { type OnThisDayEvent, getOnThisDayEvents } from "./on-this-day.js";
 dayjs.extend(utc);
 
 export interface CalendarCoverData {
+  canonical: string;
   year: number;
 }
 
 export function getCalendarCoverData(): CalendarCoverData {
-  return { year: dayjs.utc().year() };
+  const today = dayjs.utc();
+  return { canonical: today.format("YYYY-MM-DD"), year: today.year() };
 }
 
 /**
