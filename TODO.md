@@ -90,11 +90,6 @@
   - [x] chore(vite): implement code splitting and React Router’s route-level `lazy` loading
     - [x] perf: convert route components to lazy imports
     - [x] perf: move `tyme4ts`/`dayjs-plugin-lunar` out of the initial bundle
-- [ ] test(ui): add UI tests with Playwright
-  - [ ] chore: learn about UI test with Playwright
-  - [ ] test(ui): set up Playwright testing framework
-  - [ ] test(ui): add tests for main pages and navigation
-  - [ ] test(ui): test on different viewport sizes (iPhone, iPad, ThinkPad)
 
 **阶段 6：准备 GitHub Pages 部署**
 
