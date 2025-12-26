@@ -101,8 +101,8 @@
     - [x] feat(meta): add OG tags and Twitter card tags
       - [x] feat(meta): take screenshot for og:image and twitter:image
     - [x] feat(meta): add robots meta tag
-- [ ] chore: configure Vite for GitHub Pages
-  - [ ] chore(vite): set base to /calendar/ in vite.config.ts
+- [x] chore: configure Vite for GitHub Pages
+  - [x] build(vite): set base to /calendar/ in vite.config.ts
 - [ ] chore: add deployment scripts
   - [ ] chore(deps): add gh-pages
   - [ ] chore(deploy): add predeploy/deploy scripts to package.json

@@ -7,6 +7,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/calendar/",
   // The nextFont() plugin is used for font optimization similar to Next.js in this Vite/React project.
   plugins: [
     react(),
