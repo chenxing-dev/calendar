@@ -109,10 +109,8 @@
 
 **阶段 7：验证与初次部署**
 
-- [ ] test: verify build and routing
-  - [ ] test(build): run `pnpm run build` and verify `dist` output.
-  - [ ] test(preview): run `pnpm run preview` and verify hash routing
-- [ ] docs: update README with setup and usage instructions
-  - [ ] docs(readme): write intro, local run, and deploy instructions
+- [x] docs: update README with setup and usage instructions
 - [ ] chore(deploy): initial GitHub Pages deployment
   - [ ] chore(deploy): run pnpm deploy and configure Pages source branch
+- [ ] ci(deploy): add a GitHub Actions workflow for automatic deployment
+  - [ ] ci(deploy): create workflow file to build and deploy on push to main branch
