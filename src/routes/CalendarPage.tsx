@@ -14,7 +14,7 @@ function setTitleForCalendarPage(solar: SolarData, observances: ObservancesData)
   if (todayObservance) {
     document.title = `${solar.year}年${todayObservance.name}`;
   } else {
-    document.title = `${solar.year}年${solar.month}月${solar.day}日`;
+    document.title = `${solar.year}年${solar.month}月${solar.day}日 ${solar.weekdayZh}`;
   }
 }
 
