@@ -94,7 +94,8 @@
 **阶段 6：准备 GitHub Pages 部署**
 
 - [ ] feat: favicon and metadata
-  - [ ] chore: create a simple favicon.ico
+  - [x] feat: create `favicon.png`
+  - [x] refactor: update `index.html` to use the new favicon
   - [ ] feat(meta): add basic meta tags in index.html
 - [ ] chore: configure Vite for GitHub Pages
   - [ ] chore(vite): set base to /calendar/ in vite.config.ts
