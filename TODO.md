@@ -104,7 +104,7 @@
 - [x] chore: configure Vite for GitHub Pages
   - [x] build(vite): set base to /calendar/ in vite.config.ts
 - [ ] chore: add deployment scripts
-  - [ ] chore(deps): add gh-pages
+  - [x] chore(deps): add gh-pages
   - [ ] chore(deploy): add predeploy/deploy scripts to package.json
     ```json
     "predeploy": "pnpm run build",
