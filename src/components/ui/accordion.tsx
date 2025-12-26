@@ -35,9 +35,9 @@ function AccordionTrigger({
         )}
         {...props}
       >
-        <span className="plus inline mr-2">[+]</span>
-        <span className="minus hidden mr-2">[-]</span>
-        <span className="underline-offset-8 decoration-dashed group-focus-visible:underline group-hover:underline">
+        <span className="plus inline mr-1 2xl:mr-2">[+]</span>
+        <span className="minus hidden mr-1 2xl:mr-2">[-]</span>
+        <span className="underline-offset-6 2xl:underline-offset-8 decoration-dashed group-focus-visible:underline group-hover:underline">
           {children}
         </span>
       </AccordionPrimitive.Trigger>
