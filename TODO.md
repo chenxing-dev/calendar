@@ -97,6 +97,10 @@
   - [x] feat: create `favicon.png`
   - [x] refactor: update `index.html` to use the new favicon
   - [ ] feat(meta): add basic meta tags in index.html
+    - [x] feat(meta): add description
+    - [ ] feat(meta): add OG tags and Twitter card tags
+      - [ ] feat(meta): take screenshot for og:image and twitter:image
+    - [ ] feat(meta): add robots meta tag
 - [ ] chore: configure Vite for GitHub Pages
   - [ ] chore(vite): set base to /calendar/ in vite.config.ts
 - [ ] chore: add deployment scripts
