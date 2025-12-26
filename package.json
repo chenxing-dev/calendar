@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css,md,yml}\"",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
@@ -19,7 +19,7 @@
       "prettier --ignore-unknown --write",
       "eslint --fix --max-warnings=0"
     ],
-    "*.{json,css,md}": [
+    "*.{json,css,md,yml}": [
       "prettier --ignore-unknown --write"
     ]
   },

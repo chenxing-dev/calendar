@@ -110,10 +110,9 @@
 **阶段 7：验证与初次部署**
 
 - [x] docs: update README with setup and usage instructions
-- [ ] chore(deploy): initial GitHub Pages deployment
-  - [ ] chore(deploy): run pnpm deploy and configure Pages source branch
-- [ ] ci(deploy): add a GitHub Actions workflow for automatic deployment
-  - [ ] ci(deploy): create workflow file to build and deploy on push to main branch
+- [x] chore(deploy): initial GitHub Pages deployment
+  - [x] chore(deploy): run pnpm deploy and configure Pages source branch
+- [x] ci(deploy): add a GitHub Actions workflow for automatic deployment
 
 # v1.0 TODO
 
@@ -123,10 +122,13 @@
   - [ ] feat(about): add link to About page in the footer
   - [ ] feat(about): add author info and link to source code repository
   - [ ] feat(about): add credits for libraries and fonts used
+- [ ] style(layout): style the `Spinner` when `isNavigating`
+  - [ ] style: center the spinner vertically and horizontally
+  - [ ] style: add a semi-transparent overlay behind the spinner
 - [ ] chore: finalize and polish documentation
   - [ ] docs: complete README with features, usage, and contribution guidelines
   - [ ] docs: add screenshots and GIFs demonstrating app features
+  - [ ] docs: update the deployment instructions for GitHub Pages
 - [ ] fix: fix inconsistent path aliasing (`@/` vs `./`)
-- [ ]
 - [ ] feat(calendar): add observances
 - [ ] feat(calendar): add historical events
