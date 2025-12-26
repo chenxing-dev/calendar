@@ -114,3 +114,19 @@
   - [ ] chore(deploy): run pnpm deploy and configure Pages source branch
 - [ ] ci(deploy): add a GitHub Actions workflow for automatic deployment
   - [ ] ci(deploy): create workflow file to build and deploy on push to main branch
+
+# v1.0 TODO
+
+- [ ] feat(about): add an About page with app info and credits
+  - [ ] feat(about): create About route and page component
+  - [ ] feat(layout): add a footer
+  - [ ] feat(about): add link to About page in the footer
+  - [ ] feat(about): add author info and link to source code repository
+  - [ ] feat(about): add credits for libraries and fonts used
+- [ ] chore: finalize and polish documentation
+  - [ ] docs: complete README with features, usage, and contribution guidelines
+  - [ ] docs: add screenshots and GIFs demonstrating app features
+- [ ] fix: fix inconsistent path aliasing (`@/` vs `./`)
+- [ ]
+- [ ] feat(calendar): add observances
+- [ ] feat(calendar): add historical events

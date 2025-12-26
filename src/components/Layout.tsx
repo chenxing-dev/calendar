@@ -1,5 +1,5 @@
 import React from "react";
-import { zpix } from "../fonts";
+import { zpix } from "../lib/fonts";
 
 type Props = React.PropsWithChildren<{ className?: string }>;
 
