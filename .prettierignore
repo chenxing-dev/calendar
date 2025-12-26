@@ -1,9 +1,0 @@
-node_modules
-dist
-build
-.next
-.turbo
-pnpm-lock.yaml
-*.lock
-coverage
-public

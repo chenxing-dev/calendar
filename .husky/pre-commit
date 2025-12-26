@@ -1,3 +1,0 @@
-vitest --no-color && pnpm exec lint-staged
-
-# exit 1 # Simulate a test failure for testing purposes
