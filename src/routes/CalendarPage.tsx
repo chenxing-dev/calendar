@@ -61,23 +61,23 @@ export default function CalendarPage() {
               - 距离{observance}还有 {daysUntil} 天
             </p>
           ))}
-          {onThisDayEvents.length > 0 ? (
-            <>
-              <hr />
-              <Accordion type="single" collapsible>
-                <AccordionItem value="on-this-day">
-                  <AccordionTrigger>历史上的今天</AccordionTrigger>
-                  <AccordionContent>
-                    {onThisDayEvents.map((event, index) => (
-                      <p key={`${event.year}-${index}`}>
-                        {event.year}年 - {event.description}
-                      </p>
-                    ))}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </>
-          ) : null}
+        </>
+      ) : null}
+      {onThisDayEvents.length > 0 ? (
+        <>
+          <hr />
+          <Accordion type="single" collapsible>
+            <AccordionItem value="on-this-day">
+              <AccordionTrigger>历史上的今天</AccordionTrigger>
+              <AccordionContent>
+                {onThisDayEvents.map((event, index) => (
+                  <p key={`${event.year}-${index}`}>
+                    {event.year}年 - {event.description}
+                  </p>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </>
       ) : null}
       <p>&nbsp;</p>
