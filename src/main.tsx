@@ -1,19 +1,18 @@
 import { StrictMode, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import { createHashRouter, redirect, RouterProvider } from "react-router";
-import { ErrorBoundary } from "./routes/ErrorBoundary";
-import { parseDateString, invalidDateResponse } from "./lib/date-parser";
+import { ErrorBoundary } from "@/routes/ErrorBoundary";
+const CalendarLayout = lazy(() => import("@/routes/CalendarLayout"));
+const CalendarCover = lazy(() => import("@/routes/CalendarCover"));
+const CalendarPage = lazy(() => import("@/routes/CalendarPage"));
+import { parseDateString, invalidDateResponse } from "@/lib/date-parser";
 import {
   getCalendarCoverData,
   getCalendarData,
   type CalendarCoverData,
   type CalendarData,
-} from "./lib/calendar";
+} from "@/lib/calendar";
 import "./index.css";
-
-const CalendarLayout = lazy(() => import("./routes/CalendarLayout"));
-const CalendarCover = lazy(() => import("./routes/CalendarCover"));
-const CalendarPage = lazy(() => import("./routes/CalendarPage"));
 
 const router = createHashRouter([
   {

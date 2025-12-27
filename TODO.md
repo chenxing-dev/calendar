@@ -127,6 +127,6 @@
   - [x] docs: complete README with features, usage, and contribution guidelines
   - [x] docs: add screenshots demonstrating app features
   - [x] docs: update the deployment instructions for GitHub Pages
-- [ ] fix: fix inconsistent path aliasing (`@/` vs `./`)
+- [x] refactor: fix inconsistent path aliasing (`@/` vs `./`)
 - [ ] feat(calendar): add observances
 - [ ] feat(calendar): add historical events

@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import dayjs from "dayjs";
-import { getCalendarData } from "../lib/calendar.ts";
+import { getCalendarData } from "@/lib/calendar";
 
 test("getCalendarData returns expected structure and canonical date", async () => {
   // Use a deterministic UTC date: 2025-12-13

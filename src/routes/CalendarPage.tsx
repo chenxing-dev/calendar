@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { CalendarData, SolarData } from "../lib/calendar";
+import type { CalendarData, SolarData } from "@/lib/calendar";
 import type { ObservancesData } from "@/lib/observances";
 
 function setTitleForCalendarPage(solar: SolarData, observances: ObservancesData) {
