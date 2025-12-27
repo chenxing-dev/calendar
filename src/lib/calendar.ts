@@ -69,6 +69,8 @@ export interface SolarTermData {
 
 export interface CalendarData {
   canonical: string;
+  yesterday: string;
+  tomorrow: string;
   solar: SolarData;
   lunar: LunarData;
   solarTerm: SolarTermData;
@@ -165,6 +167,8 @@ async function ensureLunarPlugin(): Promise<void> {
  */
 export async function getCalendarData(date: Dayjs): Promise<CalendarData> {
   const canonical = date.format("YYYY-MM-DD");
+  const yesterday = date.subtract(1, "day").format("YYYY-MM-DD");
+  const tomorrow = date.add(1, "day").format("YYYY-MM-DD");
   const solar = getSolarData(date);
   const lunar = await getLunarData(date);
   const solarTerm = await getSolarTermData(date);
@@ -173,6 +177,8 @@ export async function getCalendarData(date: Dayjs): Promise<CalendarData> {
 
   return {
     canonical,
+    yesterday,
+    tomorrow,
     solar,
     lunar,
     solarTerm,

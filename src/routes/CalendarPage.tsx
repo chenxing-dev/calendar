@@ -19,7 +19,8 @@ function setTitleForCalendarPage(solar: SolarData, observances: ObservancesData)
 }
 
 export default function CalendarPage() {
-  const { solar, lunar, solarTerm, observances, onThisDayEvents } = useLoaderData<CalendarData>();
+  const { canonical, yesterday, tomorrow, solar, lunar, solarTerm, observances, onThisDayEvents } =
+    useLoaderData<CalendarData>();
 
   useEffect(() => {
     setTitleForCalendarPage(solar, observances);
@@ -79,10 +80,14 @@ export default function CalendarPage() {
           ) : null}
         </>
       ) : null}
-      <hr />
-      <p>
-        <Link to="/">
-          <span className="font-bold">{"<- "}</span>Back to cover
+      <p>&nbsp;</p>
+      <p className="flex justify-between">
+        <Link to={`/${yesterday}`} className="font-semibold">
+          <span>{"<-"}</span>
+        </Link>
+        <span>{canonical}</span>
+        <Link to={`/${tomorrow}`} className="font-semibold">
+          <span>{"->"}</span>
         </Link>
       </p>
     </div>
