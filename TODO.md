@@ -116,10 +116,10 @@
 
 # v1.0 TODO
 
-- [ ] feat(footer): add app info and credits
+- [x] feat(footer): add app info and credits
   - [x] feat(layout): add a footer
   - [x] feat(about): add credits for libraries and fonts used
-  - [ ] feat(about): add author info and link to source code repository
+  - [x] feat(about): add author info and link to source code repository
 - [ ] style(layout): style the `Spinner` when `isNavigating`
   - [ ] style: center the spinner vertically and horizontally
   - [ ] style: add a semi-transparent overlay behind the spinner

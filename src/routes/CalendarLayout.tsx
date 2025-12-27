@@ -1,9 +1,8 @@
 import { useNavigation, Outlet } from "react-router";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Spinner } from "@/components/ui/spinner";
-import { Layout } from "../components/Layout";
+import { Layout } from "@/components/Layout";
+import { Footer } from "@/components/Footer";
 
 export default function CalendarLayout() {
   const navigation = useNavigation();
@@ -16,25 +15,7 @@ export default function CalendarLayout() {
           <Outlet />
         </CardContent>
       </Card>
-      <footer className="mt-8 text-center">
-        © 2025 陈刑 —{" "}
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <Button variant="link" className="px-0">
-              Credits
-            </Button>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-120">
-            <p>
-              中文像素字体 - <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a>
-            </p>
-            <p>
-              农历计算 -{" "}
-              <a href="https://github.com/baranwang/dayjs-plugin-lunar">Day.js 农历扩展插件</a>
-            </p>
-          </HoverCardContent>
-        </HoverCard>
-      </footer>
+      <Footer />
     </Layout>
   );
 }
