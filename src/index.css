@@ -133,6 +133,6 @@
     background-size: auto 2px; /* underline thickness */
   }
   pre {
-    @apply whitespace-pre-wrap font-mono;
+    @apply whitespace-pre-wrap;
   }
 }
