@@ -1,0 +1,7 @@
+@font-face {
+font-family: 'zpix';
+src: url(/calendar/_next/static/media/c72c9b6a9eff5c6e-s.p.woff2) format('woff2');
+font-display: swap;
+}@font-face {font-family: 'zpix Fallback';src: local("Arial");ascent-override: 71.09%;descent-override: 14.22%;line-gap-override: 0.00%;size-adjust: 117.22%
+}.__className_eb7fe7 {font-family: 'zpix', 'zpix Fallback', monospace
+}
