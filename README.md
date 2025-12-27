@@ -2,42 +2,66 @@
 
 极简风中文日历应用，显示每日阳历、农历、节气、节日与“历史上的今天”。
 
-A minimalist Chinese calendar, with solar and lunar date, solar term, festivals/holidays, and historical events for each day.
+Built with React, React Router, Vite, Tailwind CSS, and Day.js.
 
-Built with React, React Router, Vite, Tailwind, and Day.js.
+## Features
+
+- Daily view with both Gregorian and lunar dates
+- Solar terms, traditional festivals, and holiday indicators
+- "On This Day" historical events for each date
+- Minimal, mobile-friendly UI with Chinese pixel font
 
 ## Prerequisites
 
-- Node.js (recommended >= 18)
-- pnpm (or use npm/yarn but commands below use `pnpm`)
+- Node.js (recommended >= 20)
+- pnpm (preferred) — you can also use npm or yarn but commands below use `pnpm`
 
 ## Local development
 
-Install dependencies and run the dev server:
+1. Install dependencies:
 
 ```bash
 pnpm install
+```
+
+2. Start the dev server:
+
+```bash
 pnpm dev
 ```
 
-Open http://localhost:5173/calendar/ (or the URL printed by Vite). The project uses hash routing; example route: `/#/2025-12-13`.
+Open the URL printed by Vite (typically `http://localhost:5173/calendar/`). The app uses hash routing; example route: `/#/2025-12-13`.
 
-Useful commands:
+## Scripts
 
-```bash
-pnpm run format   # format code with Prettier
-pnpm run lint     # lint the project
-pnpm run test     # run unit tests (Vitest)
-pnpm build        # build for production
-pnpm preview      # preview the production build (runs vite preview)
-```
+- `pnpm dev` — Run development server
+- `pnpm build` — Build for production
+- `pnpm preview` — Preview production build
+- `pnpm run format` — Format code with Prettier
+- `pnpm run lint` — Run linter
+- `pnpm test` — Run unit tests (Vitest)
 
-## Deploy to GitHub Pages
+## Deployment
 
-This repository is configured for GitHub Pages with `vite` `base` set to `/calendar/`.
-
-Manual deploy:
+The project is configured for GitHub Pages (`vite` base set to `/calendar/`). Manual deploy:
 
 ```bash
-pnpm deploy # publish the contents of `dist/` to the `gh-pages` branch
+pnpm deploy
 ```
+
+`pnpm deploy` is configured to publish `dist/` to the `gh-pages` branch.
+
+## Contributing
+
+Contributions are welcome. To propose changes:
+
+1. Fork the repository and create a feature branch: `git checkout -b feat/your-feature`
+2. Open a pull request against `main` with a clear description of changes
+
+## License
+
+This repository is licensed under the MIT License. See [LICENSE.md](./LICENSE.md) for details.
+
+---
+
+Thanks for checking out the project.
