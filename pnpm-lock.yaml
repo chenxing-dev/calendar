@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@next-font/plugin-vite':
-        specifier: ^1.4.0
-        version: 1.4.0(next-font@1.2.0)
+        specifier: ^1.4.1
+        version: 1.4.1(next-font@1.2.0)
       '@radix-ui/react-accordion':
         specifier: ^1.2.12
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -420,8 +420,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@next-font/plugin-vite@1.4.0':
-    resolution: {integrity: sha512-rLTTH+nHnhE3B6A2zoBcPOtoxBzoQQF8QFxZ6JOdgzrSzM+izEnx0Bh2b5GbPB8/lubrb+nBeH2nQgiaMznZNg==}
+  '@next-font/plugin-vite@1.4.1':
+    resolution: {integrity: sha512-HNpLznwHhX10kvk5gzVTVVtbPmkfX8W2nhsXZPBdJp2T8mblIijr31wZI/YSFmkLRnqlNZG/DH0yoB7krmGAsA==}
     peerDependencies:
       next-font: ~1.2.0
 
@@ -2269,7 +2269,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@next-font/plugin-vite@1.4.0(next-font@1.2.0)':
+  '@next-font/plugin-vite@1.4.1(next-font@1.2.0)':
     dependencies:
       next-font: 1.2.0
       postcss: 8.5.6
