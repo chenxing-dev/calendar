@@ -123,10 +123,10 @@
 - [x] style(layout): style the `Spinner` when `isNavigating`
   - [x] style: center the spinner vertically and horizontally
   - [x] style: add a semi-transparent overlay behind the spinner
-- [ ] chore: finalize and polish documentation
+- [x] chore: finalize and polish documentation
   - [x] docs: complete README with features, usage, and contribution guidelines
   - [x] docs: add screenshots demonstrating app features
-  - [ ] docs: update the deployment instructions for GitHub Pages
+  - [x] docs: update the deployment instructions for GitHub Pages
 - [ ] fix: fix inconsistent path aliasing (`@/` vs `./`)
 - [ ] feat(calendar): add observances
 - [ ] feat(calendar): add historical events

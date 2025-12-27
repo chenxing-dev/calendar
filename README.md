@@ -45,13 +45,21 @@ Open the URL printed by Vite (typically `http://localhost:5173/calendar/`). The 
 
 ## Deployment
 
-The project is configured for GitHub Pages (`vite` base set to `/calendar/`). Manual deploy:
+The project is configured for GitHub Pages (the Vite `base` is set to `/calendar/`).
+
+Manual deploy:
+
+1. Build the site and deploy to GitHub Pages:
 
 ```bash
 pnpm deploy
 ```
 
-`pnpm deploy` is configured to publish `dist/` to the `gh-pages` branch.
+Note: the `deploy` script runs the `predeploy` script which already runs `pnpm build`, so `pnpm deploy` alone is sufficient.
+
+2. CI / GitHub Actions
+
+A [workflow](./.github/workflows/deploy.yml) is configured to automatically build and publish on push to `main`.
 
 ## Contributing
 
