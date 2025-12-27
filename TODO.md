@@ -116,12 +116,10 @@
 
 # v1.0 TODO
 
-- [ ] feat(about): add an About page with app info and credits
-  - [ ] feat(about): create About route and page component
-  - [ ] feat(layout): add a footer
-  - [ ] feat(about): add link to About page in the footer
+- [ ] feat(footer): add app info and credits
+  - [x] feat(layout): add a footer
+  - [x] feat(about): add credits for libraries and fonts used
   - [ ] feat(about): add author info and link to source code repository
-  - [ ] feat(about): add credits for libraries and fonts used
 - [ ] style(layout): style the `Spinner` when `isNavigating`
   - [ ] style: center the spinner vertically and horizontally
   - [ ] style: add a semi-transparent overlay behind the spinner

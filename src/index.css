@@ -118,16 +118,15 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-lg 2xl:text-2xl;
     -webkit-font-smoothing: none;
   }
   a {
-    @apply focus-visible:outline-none underline-offset-6 decoration-dashed focus-visible:underline hover:underline;
+    @apply focus-visible:outline-none underline-offset-6 2xl:underline-offset-8 decoration-dashed focus-visible:underline hover:underline;
   }
   hr {
+    @apply h-5 2xl:h-8;
     border: none;
-
-    height: 1.125rem; /* vertical spacing retained */
     background-image: repeating-linear-gradient(90deg, currentColor 0 7px, transparent 7px 9px);
     background-position: center;
     background-repeat: repeat-x;
@@ -135,13 +134,5 @@
   }
   pre {
     @apply whitespace-pre-wrap font-mono;
-  }
-  @media (min-width: 96rem) {
-    a {
-      @apply underline-offset-8;
-    }
-    hr {
-      height: 2rem;
-    }
   }
 }
