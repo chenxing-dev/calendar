@@ -120,9 +120,9 @@
   - [x] feat(layout): add a footer
   - [x] feat(about): add credits for libraries and fonts used
   - [x] feat(about): add author info and link to source code repository
-- [ ] style(layout): style the `Spinner` when `isNavigating`
-  - [ ] style: center the spinner vertically and horizontally
-  - [ ] style: add a semi-transparent overlay behind the spinner
+- [x] style(layout): style the `Spinner` when `isNavigating`
+  - [x] style: center the spinner vertically and horizontally
+  - [x] style: add a semi-transparent overlay behind the spinner
 - [ ] chore: finalize and polish documentation
   - [ ] docs: complete README with features, usage, and contribution guidelines
   - [ ] docs: add screenshots and GIFs demonstrating app features

@@ -1,7 +1,7 @@
 import { useNavigation, Outlet } from "react-router";
 import { Card, CardContent } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
 import { Layout } from "@/components/Layout";
+import { LoadingOverlay } from "@/components/LoadingOverlay";
 import { Footer } from "@/components/Footer";
 
 export default function CalendarLayout() {
@@ -9,9 +9,9 @@ export default function CalendarLayout() {
   const isNavigating = Boolean(navigation.location);
   return (
     <Layout className="flex flex-col">
-      <Card className="w-full max-w-md mx-auto">
+      <Card className="w-full max-w-md mx-auto relative">
+        <LoadingOverlay isLoading={isNavigating} />
         <CardContent>
-          {isNavigating && <Spinner className="size-8" />}
           <Outlet />
         </CardContent>
       </Card>
