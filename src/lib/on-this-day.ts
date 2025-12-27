@@ -6,6 +6,12 @@ export interface OnThisDayEvent {
 }
 
 const ON_THIS_DAY: Record<string, OnThisDayEvent[]> = {
+  "5-23": [
+    {
+      year: 1995,
+      description: "加拿大软件专家詹姆斯·高斯林及其太阳微系统同事正式开发出编程语言Java。",
+    },
+  ],
   "12-13": [
     {
       year: 1937,
