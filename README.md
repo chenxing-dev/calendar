@@ -1,5 +1,7 @@
 # 日历 | Calendar
 
+![Calendar view](public/og.png)
+
 极简风中文日历应用，显示每日阳历、农历、节气、节日与“历史上的今天”。
 
 Built with React, React Router, Vite, Tailwind CSS, and Day.js.

@@ -125,7 +125,7 @@
   - [x] style: add a semi-transparent overlay behind the spinner
 - [ ] chore: finalize and polish documentation
   - [x] docs: complete README with features, usage, and contribution guidelines
-  - [ ] docs: add screenshots and GIFs demonstrating app features
+  - [x] docs: add screenshots demonstrating app features
   - [ ] docs: update the deployment instructions for GitHub Pages
 - [ ] fix: fix inconsistent path aliasing (`@/` vs `./`)
 - [ ] feat(calendar): add observances
