@@ -45,10 +45,13 @@ function getUpcomingObservances(
 
   for (let offset = 1; offset <= windowDays; offset += 1) {
     const futureDate = date.add(offset, "day");
-    const observances = getSolarObservancesForDate(futureDate);
-
-    for (const observance of observances) {
+    const solarObservances = getSolarObservancesForDate(futureDate);
+    const lunarObservance = futureDate.toLunarDay().getFestival();
+    for (const observance of solarObservances) {
       upcomingObservances.push({ observance, daysUntil: offset });
+    }
+    if (lunarObservance) {
+      upcomingObservances.push({ observance: lunarObservance.getName(), daysUntil: offset });
     }
   }
 
