@@ -43,7 +43,8 @@ export default function CalendarPage() {
         {lunar.day}
       </p>
       <p>
-        {solarTerm.name}节气 · {lunar.season}之时
+        {lunar.season}之时 · {solarTerm.name}
+        {solarTerm.threePhenology} · {solarTerm.phenologyDay}
       </p>
       {observances.today.length > 0 || observances.upcoming.length > 0 ? (
         <>

@@ -60,11 +60,15 @@ export interface LunarData {
  * - `name`：当天所在节气
  * - `dayOfTerm`：位于节气的第几天
  * - `isTermDay`：当天是否节气
+ * - `threePhenology`：当天所属的三候名称
+ * - `phenologyDay`：当天所属的候名称
  */
 export interface SolarTermData {
   name: string;
   dayOfTerm: number;
   isTermDay: boolean;
+  threePhenology: string;
+  phenologyDay: string;
 }
 
 export interface CalendarData {
@@ -121,23 +125,23 @@ export async function getLunarData(date: Dayjs): Promise<LunarData> {
 /**
  * Build the `SolarTermData` for a given Dayjs date.
  *
- * Semantics:
- * - `name`: the solar term (节气) that the date falls within.
- * - `dayOfTerm`: the 1-based day number within that solar term.
- * - `isTermDay`: true only on the first day of that solar term.
- *
  * @param date - Target date as a Dayjs instance.
  */
 export async function getSolarTermData(date: Dayjs): Promise<SolarTermData> {
   await ensureLunarPlugin();
-  const termDay = date.toLunarDay().getSolarDay().getTermDay();
+  const solarDay = date.toLunarDay().getSolarDay();
 
+  const termDay = solarDay.getTermDay();
   const termDayIndex = termDay.getDayIndex(); // 节气日序号（0 起始）
+  const threePhenology = solarDay.getPhenology().getThreePhenology().getName();
+  const phenologyDay = solarDay.getPhenologyDay().getName();
 
   return {
     name: termDay.getName(),
     dayOfTerm: termDayIndex + 1,
     isTermDay: termDayIndex === 0,
+    threePhenology,
+    phenologyDay,
   };
 }
 
