@@ -1,13 +1,13 @@
 import { Dayjs } from "dayjs";
 
-const UPCOMING_WINDOW_DAYS = 14;
+const UPCOMING_WINDOW_DAYS = 20;
 
 export interface ObservanceEntry {
   name: string;
   nameClass?: string;
   message?: string;
   messageClass?: string;
-  showUpcoming?: boolean;
+  upcomingWindowDays?: number;
 }
 
 const SOLAR_OBSERVANCES: Record<string, string[]> = {
@@ -20,10 +20,13 @@ const SOLAR_OBSERVANCES: Record<string, string[]> = {
 
 const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
   国际数据隐私日: {
-    showUpcoming: false,
+    upcomingWindowDays: 0,
+  },
+  情人节: {
+    upcomingWindowDays: 14,
   },
   国家公祭日: {
-    showUpcoming: false,
+    upcomingWindowDays: 0,
   },
   圣诞节: {
     nameClass: "text-red-800",
@@ -63,7 +66,8 @@ function getUpcomingObservances(
     const lunarObservance = getLunarFestivalForDate(futureDate);
     for (const observance of solarObservances) {
       if (observance === lunarObservance) continue;
-      if (OBSERVANCE_META[observance]?.showUpcoming === false) continue;
+      const upcomingWindowDays = OBSERVANCE_META[observance]?.upcomingWindowDays;
+      if (upcomingWindowDays !== undefined && upcomingWindowDays < offset) continue;
       upcomingObservances.push({ observance, daysUntil: offset });
     }
     if (lunarObservance) {
