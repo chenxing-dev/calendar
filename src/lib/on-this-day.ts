@@ -46,6 +46,16 @@ const ON_THIS_DAY: Record<string, OnThisDayEvent[]> = {
       description: "蘇維埃俄國、烏克蘭、白俄羅斯、外高加索聯邦正式簽署《蘇聯成立條約》而組成蘇聯。",
     },
   ],
+  "12-31": [
+    {
+      year: 1999,
+      description: "鲍利斯·叶利钦宣布辞去俄罗斯总统，总理弗拉基米尔·普京受命成为代理总统。",
+    },
+    {
+      year: 2004,
+      description: "台湾台北市信义区的台北101大楼正式启用，为当时世界上最高的摩天大楼。",
+    },
+  ],
 };
 
 export function getOnThisDayEvents(date: Dayjs): OnThisDayEvent[] {
