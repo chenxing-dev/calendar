@@ -16,7 +16,8 @@ dayjs.extend(isBetween);
  */
 export function parseDateString(raw: string): Dayjs | null {
   const parsed = dayjs.utc(raw);
-  if (parsed.isValid()) return parsed.startOf("day");
+  if (parsed.isValid() && parsed.isBetween("2001-12-29", "9999-12-31", "day", "()"))
+    return parsed.startOf("day");
 
   return null;
 }
@@ -31,7 +32,7 @@ export function invalidDateResponse(raw: string | null): Response {
   const message = [
     `Invalid date: "${raw}".`,
     "The provided value is not a valid date.",
-    "Please provide a reasonable calendar date (for example: 2025-12-18).",
+    "Please provide a date between 2001-12-29 and 9999-12-31 (for example: 2025-12-18).",
   ].join("\n");
 
   return new Response(message, {
