@@ -11,6 +11,7 @@ export interface ObservanceEntry {
 
 const SOLAR_OBSERVANCES: Record<string, string[]> = {
   "1-1": ["元旦"],
+  "2-14": ["情人节"],
   "12-13": ["国家公祭日"],
   "12-25": ["圣诞节"],
 };
