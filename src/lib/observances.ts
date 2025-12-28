@@ -7,16 +7,24 @@ export interface ObservanceEntry {
   nameClass?: string;
   message?: string;
   messageClass?: string;
+  showUpcoming?: boolean;
 }
 
 const SOLAR_OBSERVANCES: Record<string, string[]> = {
   "1-1": ["元旦"],
+  "1-28": ["国际数据隐私日"],
   "2-14": ["情人节"],
   "12-13": ["国家公祭日"],
   "12-25": ["圣诞节"],
 };
 
 const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
+  国际数据隐私日: {
+    showUpcoming: false,
+  },
+  国家公祭日: {
+    showUpcoming: false,
+  },
   圣诞节: {
     nameClass: "text-red-800",
     message: "MERRY CHRISTMAS!",
@@ -54,6 +62,8 @@ function getUpcomingObservances(
     const solarObservances = getSolarObservancesForDate(futureDate);
     const lunarObservance = getLunarFestivalForDate(futureDate);
     for (const observance of solarObservances) {
+      if (observance === lunarObservance) continue;
+      if (OBSERVANCE_META[observance]?.showUpcoming === false) continue;
       upcomingObservances.push({ observance, daysUntil: offset });
     }
     if (lunarObservance) {
@@ -72,11 +82,8 @@ export function getObservancesData(date: Dayjs): ObservancesData {
   const solar = getSolarObservancesForDate(date);
   const lunar = getLunarFestivalForDate(date);
 
-  let todayObservances: string[] = [...solar];
+  const todayObservances: string[] = [...solar];
   if (lunar) todayObservances.unshift(lunar);
-
-  // remove duplicates while preserving order
-  todayObservances = Array.from(new Set(todayObservances));
 
   return {
     today: toObservanceEntries(todayObservances),
