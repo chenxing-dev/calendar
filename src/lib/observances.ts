@@ -38,6 +38,11 @@ function getSolarObservancesForDate(date: Dayjs): string[] {
   return SOLAR_OBSERVANCES[date.format("M-D")] ?? [];
 }
 
+function getLunarFestivalForDate(date: Dayjs): string | null {
+  const festival = date.toLunarDay().getFestival();
+  return festival ? festival.getName() : null;
+}
+
 function getUpcomingObservances(
   date: Dayjs,
   windowDays = UPCOMING_WINDOW_DAYS
@@ -47,12 +52,12 @@ function getUpcomingObservances(
   for (let offset = 1; offset <= windowDays; offset += 1) {
     const futureDate = date.add(offset, "day");
     const solarObservances = getSolarObservancesForDate(futureDate);
-    const lunarObservance = futureDate.toLunarDay().getFestival();
+    const lunarObservance = getLunarFestivalForDate(futureDate);
     for (const observance of solarObservances) {
       upcomingObservances.push({ observance, daysUntil: offset });
     }
     if (lunarObservance) {
-      upcomingObservances.push({ observance: lunarObservance.getName(), daysUntil: offset });
+      upcomingObservances.push({ observance: lunarObservance, daysUntil: offset });
     }
   }
 
@@ -64,8 +69,17 @@ function toObservanceEntries(observances: string[]): ObservanceEntry[] {
 }
 
 export function getObservancesData(date: Dayjs): ObservancesData {
+  const solar = getSolarObservancesForDate(date);
+  const lunar = getLunarFestivalForDate(date);
+
+  let todayObservances: string[] = [...solar];
+  if (lunar) todayObservances.unshift(lunar);
+
+  // remove duplicates while preserving order
+  todayObservances = Array.from(new Set(todayObservances));
+
   return {
-    today: toObservanceEntries(getSolarObservancesForDate(date)),
+    today: toObservanceEntries(todayObservances),
     upcoming: getUpcomingObservances(date),
   };
 }
