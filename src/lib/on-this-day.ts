@@ -364,6 +364,12 @@ const ON_THIS_DAY: Record<string, OnThisDayEvent[]> = {
       description: "张衡研制的候风地动仪观测到陇西发生地震。",
     },
   ],
+  "3-3": [
+    {
+      year: 636,
+      description: "唐朝五部史书（《梁书》、《陈书》、《北齐书》、《北周书》、《隋书》）修撰完成。",
+    },
+  ],
   "3-8": [
     {
       year: 1911,

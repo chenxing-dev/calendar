@@ -17,6 +17,7 @@ const SOLAR_OBSERVANCES: Record<string, string[]> = {
   "2-4": ["世界癌症日"],
   "2-14": ["情人节"],
   "3-1": ["国际海豹日"],
+  "3-3": ["全国爱耳日"],
   "3-8": ["国际妇女节"],
   "3-12": ["植树节"],
   "12-13": ["国家公祭日"],
@@ -37,6 +38,9 @@ const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
     upcomingWindowDays: 14,
   },
   国际海豹日: {
+    upcomingWindowDays: 0,
+  },
+  全国爱耳日: {
     upcomingWindowDays: 0,
   },
   国际妇女节: {
