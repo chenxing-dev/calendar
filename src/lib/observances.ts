@@ -1,6 +1,6 @@
 import { Dayjs } from "dayjs";
 
-const UPCOMING_WINDOW_DAYS = 20;
+const UPCOMING_WINDOW_DAYS = 24;
 
 export interface ObservanceEntry {
   name: string;
@@ -20,6 +20,12 @@ const SOLAR_OBSERVANCES: Record<string, string[]> = {
   "3-3": ["全国爱耳日"],
   "3-8": ["国际妇女节"],
   "3-12": ["植树节"],
+  "3-14": ["圆周率日"],
+  "3-15": ["国际消费者权益日"],
+  "3-21": ["国际消除种族歧视日"],
+  "3-22": ["世界水日"],
+  "3-23": ["世界气象日"],
+  "3-27": ["世界戏剧日"],
   "12-13": ["国家公祭日"],
   "12-25": ["圣诞节"],
 };
@@ -49,8 +55,27 @@ const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
   植树节: {
     upcomingWindowDays: 7,
   },
+  圆周率日: {
+    upcomingWindowDays: 0,
+  },
+  国际消费者权益日: {
+    upcomingWindowDays: 0,
+  },
   龙头节: {
     upcomingWindowDays: 7,
+    name: "龙抬头",
+  },
+  国际消除种族歧视日: {
+    upcomingWindowDays: 0,
+  },
+  世界水日: {
+    upcomingWindowDays: 0,
+  },
+  世界气象日: {
+    upcomingWindowDays: 0,
+  },
+  世界戏剧日: {
+    upcomingWindowDays: 1,
   },
   国家公祭日: {
     upcomingWindowDays: 0,
