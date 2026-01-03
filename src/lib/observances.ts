@@ -27,6 +27,12 @@ const SOLAR_OBSERVANCES: Record<string, string[]> = {
   "3-23": ["世界气象日"],
   "3-27": ["世界戏剧日"],
   "4-1": ["愚人节"],
+  "4-13": ["泼水节"],
+  "4-15": ["世界艺术日"],
+  "4-18": ["国际古迹遗址日"],
+  "4-19": ["世界自行车日"],
+  "4-23": ["世界图书与版权日"],
+  "5-1": ["五一劳动节"],
   "12-13": ["国家公祭日"],
   "12-25": ["圣诞节"],
 };
@@ -80,6 +86,21 @@ const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
   },
   愚人节: {
     upcomingWindowDays: 0,
+  },
+  泼水节: {
+    upcomingWindowDays: 0,
+  },
+  世界艺术日: {
+    upcomingWindowDays: 0,
+  },
+  国际古迹遗址日: {
+    upcomingWindowDays: 0,
+  },
+  世界自行车日: {
+    upcomingWindowDays: 0,
+  },
+  世界图书与版权日: {
+    upcomingWindowDays: 14,
   },
   国家公祭日: {
     upcomingWindowDays: 0,
