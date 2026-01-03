@@ -358,6 +358,12 @@ const ON_THIS_DAY: Record<string, OnThisDayEvent[]> = {
       description: "中国唐朝开设律学，培养法律人才。",
     },
   ],
+  "3-1": [
+    {
+      year: 138,
+      description: "张衡研制的候风地动仪观测到陇西发生地震。",
+    },
+  ],
   "3-8": [
     {
       year: 1911,

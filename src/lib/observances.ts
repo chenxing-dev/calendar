@@ -17,6 +17,8 @@ const SOLAR_OBSERVANCES: Record<string, string[]> = {
   "2-4": ["世界癌症日"],
   "2-14": ["情人节"],
   "3-1": ["国际海豹日"],
+  "3-8": ["国际妇女节"],
+  "3-12": ["植树节"],
   "12-13": ["国家公祭日"],
   "12-25": ["圣诞节"],
 };
@@ -36,6 +38,15 @@ const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
   },
   国际海豹日: {
     upcomingWindowDays: 0,
+  },
+  国际妇女节: {
+    upcomingWindowDays: 7,
+  },
+  植树节: {
+    upcomingWindowDays: 7,
+  },
+  龙头节: {
+    upcomingWindowDays: 7,
   },
   国家公祭日: {
     upcomingWindowDays: 0,
@@ -76,14 +87,15 @@ function getUpcomingObservances(
     const futureDate = date.add(offset, "day");
     const solarObservances = getSolarObservancesForDate(futureDate);
     const lunarObservance = getLunarFestivalForDate(futureDate);
-    for (const observance of solarObservances) {
-      if (observance === lunarObservance) continue;
+    const observanceSet = new Set<string>(solarObservances);
+    if (lunarObservance) {
+      observanceSet.add(lunarObservance);
+    }
+    const observances = Array.from(observanceSet);
+    for (const observance of observances) {
       const upcomingWindowDays = OBSERVANCE_META[observance]?.upcomingWindowDays;
       if (upcomingWindowDays !== undefined && upcomingWindowDays < offset) continue;
       upcomingObservances.push({ observance, daysUntil: offset });
-    }
-    if (lunarObservance) {
-      upcomingObservances.push({ observance: lunarObservance, daysUntil: offset });
     }
   }
 
