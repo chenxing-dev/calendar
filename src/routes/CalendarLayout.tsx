@@ -36,7 +36,7 @@ export default function CalendarLayout() {
       Promise.resolve().then(markLoaded);
     }
 
-    const timeout = setTimeout(markLoaded, 5000);
+    const timeout = setTimeout(markLoaded, 10000);
     return () => {
       mounted = false;
       clearTimeout(timeout);
