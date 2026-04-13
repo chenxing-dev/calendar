@@ -29,23 +29,14 @@ export default function CalendarLayout() {
       if (mounted) setFontsLoaded(true);
     };
 
-    // If already present, mark immediately (not setting state synchronously outside render)
+    // Wait for the browser to report all fonts ready
     try {
-      if (document.fonts.check(FONT_CHECK)) {
-        // schedule on next tick to avoid sync setState in effect
-        Promise.resolve().then(markLoaded);
-      } else {
-        // ask browser to load the specific face
-        document.fonts
-          .load(FONT_CHECK)
-          .then(markLoaded)
-          .catch(() => {});
-      }
+      document.fonts.ready.then(markLoaded).catch(() => {});
     } catch {
       Promise.resolve().then(markLoaded);
     }
 
-    const timeout = setTimeout(markLoaded, 3000);
+    const timeout = setTimeout(markLoaded, 5000);
     return () => {
       mounted = false;
       clearTimeout(timeout);
