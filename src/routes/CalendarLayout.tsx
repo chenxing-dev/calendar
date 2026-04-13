@@ -8,9 +8,16 @@ import { Footer } from "@/components/Footer";
 export default function CalendarLayout() {
   const navigation = useNavigation();
   const isNavigating = Boolean(navigation.location);
+  const FONT_CHECK = '1em "Zpix"';
+
   const [fontsLoaded, setFontsLoaded] = useState(() => {
     if (typeof document === "undefined") return true;
-    return !("fonts" in document);
+    if (!("fonts" in document)) return true;
+    try {
+      return document.fonts.check(FONT_CHECK);
+    } catch {
+      return false;
+    }
   });
 
   useEffect(() => {
@@ -22,7 +29,22 @@ export default function CalendarLayout() {
       if (mounted) setFontsLoaded(true);
     };
 
-    document.fonts.ready.then(markLoaded);
+    // If already present, mark immediately (not setting state synchronously outside render)
+    try {
+      if (document.fonts.check(FONT_CHECK)) {
+        // schedule on next tick to avoid sync setState in effect
+        Promise.resolve().then(markLoaded);
+      } else {
+        // ask browser to load the specific face
+        document.fonts
+          .load(FONT_CHECK)
+          .then(markLoaded)
+          .catch(() => {});
+      }
+    } catch {
+      Promise.resolve().then(markLoaded);
+    }
+
     const timeout = setTimeout(markLoaded, 3000);
     return () => {
       mounted = false;
@@ -51,7 +73,11 @@ export default function CalendarLayout() {
           <Outlet />
         </CardContent>
       </Card>
-      <Footer />
+      <div
+        className={`transition-opacity duration-300 ${fontsLoaded ? "opacity-100" : "opacity-0"}`}
+      >
+        <Footer />
+      </div>
     </Layout>
   );
 }
