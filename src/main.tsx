@@ -5,13 +5,7 @@ import { ErrorBoundary } from "@/routes/ErrorBoundary";
 const CalendarLayout = lazy(() => import("@/routes/CalendarLayout"));
 const CalendarCover = lazy(() => import("@/routes/CalendarCover"));
 const CalendarPage = lazy(() => import("@/routes/CalendarPage"));
-import { parseDateString, invalidDateResponse } from "@/lib/date-parser";
-import {
-  getCalendarCoverData,
-  getCalendarData,
-  type CalendarCoverData,
-  type CalendarData,
-} from "@/lib/calendar";
+import type { CalendarCoverData, CalendarData } from "@/lib/calendar";
 import "./index.css";
 
 const router = createHashRouter([
@@ -24,6 +18,7 @@ const router = createHashRouter([
         index: true,
         Component: CalendarCover,
         loader: async (): Promise<CalendarCoverData> => {
+          const { getCalendarCoverData } = await import("@/lib/calendar");
           return getCalendarCoverData();
         },
       },
@@ -31,6 +26,9 @@ const router = createHashRouter([
         path: ":date",
         Component: CalendarPage,
         loader: async ({ params }): Promise<CalendarData | Response> => {
+          const [{ parseDateString, invalidDateResponse }, { getCalendarData }] = await Promise.all(
+            [import("@/lib/date-parser"), import("@/lib/calendar")]
+          );
           const raw = params.date ?? null;
           if (raw === null || raw.trim() === "") return redirect(`/`);
           const date = parseDateString(raw);
