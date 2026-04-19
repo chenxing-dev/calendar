@@ -1,6 +1,9 @@
 import { Dayjs } from "dayjs";
+import { OBSERVANCES } from "./observances.data";
 
 const UPCOMING_WINDOW_DAYS = 24;
+
+type ObservanceMap = Readonly<Record<string, readonly string[]>>;
 
 export interface ObservanceEntry {
   name: string;
@@ -10,102 +13,45 @@ export interface ObservanceEntry {
   upcomingWindowDays?: number;
 }
 
-const SOLAR_OBSERVANCES: Record<string, string[]> = {
-  "1-1": ["元旦"],
-  "1-28": ["国际数据隐私日"],
-  "2-2": ["世界湿地日"],
-  "2-4": ["世界癌症日"],
-  "2-14": ["情人节"],
-  "3-1": ["国际海豹日"],
-  "3-3": ["全国爱耳日"],
-  "3-8": ["国际妇女节"],
-  "3-12": ["植树节"],
-  "3-14": ["圆周率日"],
-  "3-15": ["国际消费者权益日"],
-  "3-21": ["国际消除种族歧视日"],
-  "3-22": ["世界水日"],
-  "3-23": ["世界气象日"],
-  "3-27": ["世界戏剧日"],
-  "4-1": ["愚人节"],
-  "4-13": ["泼水节"],
-  "4-15": ["世界艺术日"],
-  "4-18": ["国际古迹遗址日"],
-  "4-19": ["世界自行车日"],
-  "4-23": ["世界图书与版权日"],
-  "5-1": ["五一劳动节"],
-  "12-13": ["国家公祭日"],
-  "12-25": ["圣诞节"],
-};
-
 const OBSERVANCE_META: Record<string, Partial<ObservanceEntry>> = {
-  国际数据隐私日: {
-    upcomingWindowDays: 0,
+  元旦: {
+    upcomingWindowDays: 14,
   },
-  世界湿地日: {
-    upcomingWindowDays: 0,
-  },
-  世界癌症日: {
-    upcomingWindowDays: 0,
+  春节: {
+    upcomingWindowDays: 30,
   },
   情人节: {
-    upcomingWindowDays: 14,
-  },
-  国际海豹日: {
-    upcomingWindowDays: 0,
-  },
-  全国爱耳日: {
-    upcomingWindowDays: 0,
+    upcomingWindowDays: 7,
   },
   国际妇女节: {
-    upcomingWindowDays: 7,
-  },
-  植树节: {
-    upcomingWindowDays: 7,
-  },
-  圆周率日: {
-    upcomingWindowDays: 0,
-  },
-  国际消费者权益日: {
-    upcomingWindowDays: 0,
-  },
-  龙头节: {
-    upcomingWindowDays: 7,
-    name: "龙抬头",
-  },
-  国际消除种族歧视日: {
-    upcomingWindowDays: 0,
-  },
-  世界水日: {
-    upcomingWindowDays: 0,
-  },
-  世界气象日: {
-    upcomingWindowDays: 0,
-  },
-  世界戏剧日: {
-    upcomingWindowDays: 1,
-  },
-  愚人节: {
-    upcomingWindowDays: 0,
-  },
-  泼水节: {
-    upcomingWindowDays: 0,
-  },
-  世界艺术日: {
-    upcomingWindowDays: 0,
-  },
-  国际古迹遗址日: {
-    upcomingWindowDays: 0,
-  },
-  世界自行车日: {
-    upcomingWindowDays: 0,
-  },
-  世界图书与版权日: {
     upcomingWindowDays: 14,
   },
-  国家公祭日: {
-    upcomingWindowDays: 0,
+  清明: {
+    upcomingWindowDays: 7,
+  },
+  国际劳动节: {
+    upcomingWindowDays: 14,
+  },
+  母亲节: {
+    upcomingWindowDays: 7,
+  },
+  端午节: {
+    upcomingWindowDays: 14,
+  },
+  中华人民共和国抗日戰爭勝利紀念日: {
+    upcomingWindowDays: 14,
+  },
+  中秋节: {
+    upcomingWindowDays: 14,
+  },
+  "中华人民共和国国庆节（1949年）": {
+    upcomingWindowDays: 14,
+  },
+  重阳节: {
+    upcomingWindowDays: 14,
   },
   圣诞节: {
+    upcomingWindowDays: 14,
     nameClass: "text-red-800",
     message: "MERRY CHRISTMAS!",
     messageClass: "text-green-800 font-semibold",
@@ -123,7 +69,9 @@ export interface ObservancesData {
 }
 
 function getSolarObservancesForDate(date: Dayjs): string[] {
-  return SOLAR_OBSERVANCES[date.format("M-D")] ?? [];
+  const d = date.format("M-D");
+  const generatedObservances = (OBSERVANCES as ObservanceMap)[d];
+  return generatedObservances ? [...generatedObservances] : [];
 }
 
 function getLunarFestivalForDate(date: Dayjs): string | null {
@@ -147,8 +95,8 @@ function getUpcomingObservances(
     }
     const observances = Array.from(observanceSet);
     for (const observance of observances) {
-      const upcomingWindowDays = OBSERVANCE_META[observance]?.upcomingWindowDays;
-      if (upcomingWindowDays !== undefined && upcomingWindowDays < offset) continue;
+      const upcomingWindowDays = OBSERVANCE_META[observance]?.upcomingWindowDays ?? 0;
+      if (upcomingWindowDays < offset) continue;
       upcomingObservances.push({ observance, daysUntil: offset });
     }
   }

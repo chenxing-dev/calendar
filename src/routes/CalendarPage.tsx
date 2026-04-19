@@ -71,11 +71,19 @@ export default function CalendarPage() {
             <AccordionItem value="on-this-day">
               <AccordionTrigger>历史上的今天</AccordionTrigger>
               <AccordionContent>
-                {onThisDayEvents.map((event, index) => (
-                  <p key={`${event.year}-${index}`}>
-                    {event.year}年 - {event.description}
-                  </p>
-                ))}
+                {onThisDayEvents.slice(0, 3).map((event, index) => {
+                  const formatYear = (y: number | null | undefined) => {
+                    if (y === null || y === undefined) return "";
+                    return y < 0 ? `前${Math.abs(y)}` : `${y}`;
+                  };
+                  const yearText = formatYear(event.year);
+                  return (
+                    <p key={`${event.year ?? "unknown"}-${index}`}>
+                      {yearText ? `${yearText}年 - ` : ""}
+                      {event.description}
+                    </p>
+                  );
+                })}
               </AccordionContent>
             </AccordionItem>
           </Accordion>
